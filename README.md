@@ -33,21 +33,21 @@ devtools::install_github("kiernann/predictr")
 
 ``` r
 library(predictr)
-open_markets()[, c(3, 5, 11)]
-#> # A tibble: 1,288 x 3
-#>    market                                   contract    close
-#>    <chr>                                    <chr>       <dbl>
-#>  1 Which party wins the Presidency in 2020? Republican   0.56
-#>  2 Which party wins the Presidency in 2020? Democratic   0.44
-#>  3 Which party wins the Presidency in 2020? Libertarian  0.02
-#>  4 Which party wins the Presidency in 2020? Green        0.02
-#>  5 Will Cuban run in 2020?                  <NA>         0.05
-#>  6 Will Cuomo run in 2020?                  <NA>         0.05
-#>  7 Woman president in 2020?                 <NA>         0.08
-#>  8 Will the 2020 Dem nominee be a woman?    <NA>         0.1 
-#>  9 Will the 2020 GOP nominee be a woman?    <NA>         0.03
-#> 10 Will Zuckerberg run in 2020?             <NA>         0.02
-#> # … with 1,278 more rows
+market_price(mid = 3633)
+#> # A tibble: 33 x 7
+#>    time                  mid market                     cid contract  last close
+#>    <dttm>              <int> <chr>                    <int> <fct>    <dbl> <dbl>
+#>  1 2020-02-08 18:07:53  3633 2020 Democratic nominee?  7725 Sanders   0.45  0.44
+#>  2 2020-02-08 18:07:53  3633 2020 Democratic nominee? 13871 Bloombe…  0.23  0.22
+#>  3 2020-02-08 18:07:53  3633 2020 Democratic nominee? 14769 Buttigi…  0.17  0.18
+#>  4 2020-02-08 18:07:53  3633 2020 Democratic nominee?  7729 Biden     0.13  0.13
+#>  5 2020-02-08 18:07:53  3633 2020 Democratic nominee?  7730 Warren    0.05  0.07
+#>  6 2020-02-08 18:07:53  3633 2020 Democratic nominee? 13491 Clinton   0.04  0.04
+#>  7 2020-02-08 18:07:53  3633 2020 Democratic nominee?  7734 Klobuch…  0.03  0.02
+#>  8 2020-02-08 18:07:53  3633 2020 Democratic nominee? 14670 Yang      0.02  0.04
+#>  9 2020-02-08 18:07:53  3633 2020 Democratic nominee?  7726 Booker    0.01  0.01
+#> 10 2020-02-08 18:07:53  3633 2020 Democratic nominee?  7727 Harris    0.01  0.01
+#> # … with 23 more rows
 ```
 
 <!-- refs: start -->

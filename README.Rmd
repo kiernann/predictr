@@ -39,7 +39,7 @@ devtools::install_github("kiernann/predictr")
 
 ```{r open-markets}
 library(predictr)
-open_markets()[, c(3, 5, 11)]
+market_price(mid = 3633)
 ```
 
 <!-- refs: start -->

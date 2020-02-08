@@ -4,7 +4,10 @@
 \alias{open_markets}
 \title{List all open markets}
 \usage{
-open_markets()
+open_markets(split = FALSE)
+}
+\arguments{
+\item{split}{Should the data frame be split as a list of markets?}
 }
 \value{
 A data frame of market contracts prices.
@@ -13,5 +16,5 @@ A data frame of market contracts prices.
 List all open markets
 }
 \examples{
-open_markets()
+open_markets(split = FALSE)
 }

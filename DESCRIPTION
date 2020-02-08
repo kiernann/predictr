@@ -2,11 +2,10 @@ Package: predictr
 Title: Predict Politics with Markets
 Version: 0.0.0.9000
 Authors@R: 
-    person(given = "First",
-           family = "Last",
+    person(given = "Kiernan",
+           family = "Nicholls",
            role = c("aut", "cre"),
-           email = "first.last@example.com",
-           comment = c(ORCID = "YOUR-ORCID-ID"))
+           email = "kiernann@protonmail.com")
 Description: Query the PredictIt API for market price history.
 License: GPL-3
 Depends: 
@@ -15,6 +14,7 @@ Imports:
     dplyr (>= 0.8.4),
     jsonlite (>= 1.6.1),
     lubridate (>= 1.7.4),
+    stringr (>= 1.4.0),
     tibble (>= 2.1.3),
     tidyr (>= 1.0.0)
 Suggests: 
