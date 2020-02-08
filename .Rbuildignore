@@ -1,0 +1,12 @@
+^predictr\.Rproj$
+^\.Rproj\.user$
+^LICENSE\.md$
+^README\.Rmd$
+^cran-comments\.md$
+^\.github$
+^\.travis\.yml$
+^codecov\.yml$
+^\.covrignore$
+^_pkgdown\.yml$
+^docs$
+^pkgdown$
