@@ -16,10 +16,10 @@ knitr::opts_chunk$set(
 # predictr
 
 <!-- badges: start -->
-[![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
-[![CRAN status](https://www.r-pkg.org/badges/version/predictr)](https://CRAN.R-project.org/package=predictr)
-[![Travis build status](https://travis-ci.org/kiernann/predictr.svg?branch=master)](https://travis-ci.org/kiernann/predictr)
-[![Codecov test coverage](https://codecov.io/gh/kiernann/predictr/branch/master/graph/badge.svg)](https://codecov.io/gh/kiernann/predictr?branch=master)
+[![Lifecycle: experimental][life_badge]][life_link]
+[![CRAN status][cran_badge]][cran_link]
+[![Travis build status][trav_badge]][trav_link]
+[![Codecov test coverage][cov_badge]][cov_link]
 <!-- badges: end -->
 
 The goal of predictr is to access the price of binary contracts trading on the
@@ -35,5 +35,22 @@ You can install the development version from [GitHub]() with:
 devtools::install_github("kiernann/predictr")
 ```
 
+## Usage
+
+```{r open-markets}
+library(predictr)
+open_markets()[, c(3, 5, 11)]
+```
+
+<!-- refs: start -->
+[life_badge]: https://img.shields.io/badge/lifecycle-maturing-blue.svg
+[life_link]: https://www.tidyverse.org/lifecycle/#experimental
+[cran_badge]: https://www.r-pkg.org/badges/version/predictr
+[cran_link]: https://CRAN.R-project.org/package=predictr
+[trav_badge]: https://travis-ci.org/kiernann/predictr?branch=master
+[trav_link]: https://travis-ci.org/kiernann/predictr
+[cov_badge]: https://codecov.io/gh/kiernann/predictr/branch/master/graph/badge.svg
+[cov_link]: https://codecov.io/gh/kiernann/predictr?branch=master
 [pi]: https://www.predictit.org/
 [gh]: https://github.com/kiernann/predictr
+<!-- refs: end -->
