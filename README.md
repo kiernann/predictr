@@ -32,23 +32,34 @@ devtools::install_github("kiernann/predictr")
 ## Usage
 
 ``` r
+library(tidyverse)
 library(predictr)
-market_price(mid = 3633)
-#> # A tibble: 33 x 7
-#>    time                  mid market                     cid contract  last close
-#>    <dttm>              <int> <chr>                    <int> <fct>    <dbl> <dbl>
-#>  1 2020-02-08 18:07:53  3633 2020 Democratic nominee?  7725 Sanders   0.45  0.44
-#>  2 2020-02-08 18:07:53  3633 2020 Democratic nominee? 13871 Bloombe…  0.23  0.22
-#>  3 2020-02-08 18:07:53  3633 2020 Democratic nominee? 14769 Buttigi…  0.17  0.18
-#>  4 2020-02-08 18:07:53  3633 2020 Democratic nominee?  7729 Biden     0.13  0.13
-#>  5 2020-02-08 18:07:53  3633 2020 Democratic nominee?  7730 Warren    0.05  0.07
-#>  6 2020-02-08 18:07:53  3633 2020 Democratic nominee? 13491 Clinton   0.04  0.04
-#>  7 2020-02-08 18:07:53  3633 2020 Democratic nominee?  7734 Klobuch…  0.03  0.02
-#>  8 2020-02-08 18:07:53  3633 2020 Democratic nominee? 14670 Yang      0.02  0.04
-#>  9 2020-02-08 18:07:53  3633 2020 Democratic nominee?  7726 Booker    0.01  0.01
-#> 10 2020-02-08 18:07:53  3633 2020 Democratic nominee?  7727 Harris    0.01  0.01
-#> # … with 23 more rows
+market_price(mid = 6403) %>% arrange(contract)
+#> # A tibble: 9 x 7
+#>   time                  mid market                      cid contract  last close
+#>   <dttm>              <int> <chr>                     <int> <fct>    <dbl> <dbl>
+#> 1 2020-02-08 22:01:47  6403 NH primary margin of vic… 20984 [0,4)     0.44  0.69
+#> 2 2020-02-08 22:01:47  6403 NH primary margin of vic… 20992 [10,11)   0.03 NA   
+#> 3 2020-02-08 22:01:47  6403 NH primary margin of vic… 20989 [11,Inf)  0.05  0.1 
+#> 4 2020-02-08 22:01:47  6403 NH primary margin of vic… 20988 [4,5)     0.19  0.19
+#> 5 2020-02-08 22:01:47  6403 NH primary margin of vic… 20990 [5,6)     0.15  0.14
+#> 6 2020-02-08 22:01:47  6403 NH primary margin of vic… 20991 [6,7)     0.1   0.18
+#> 7 2020-02-08 22:01:47  6403 NH primary margin of vic… 20985 [7,8)     0.05  0.28
+#> 8 2020-02-08 22:01:47  6403 NH primary margin of vic… 20986 [8,9)     0.04  0.11
+#> 9 2020-02-08 22:01:47  6403 NH primary margin of vic… 20987 [9,10)    0.03 NA
 ```
+
+``` r
+market_history(mid = 3633) %>% 
+  filter(contract %in% c("Sanders", "Biden", "Bloomberg", "Buttigieg")) %>% 
+  ggplot(aes(x = time, y = close)) +
+  geom_line(aes(color = contract), size = 2) +
+  scale_y_continuous(labels = scales::percent) +
+  theme(legend.position = "bottom") +
+  labs(title = "Democratic nominee", color = "Contract", y = "Price", x = "Date")
+```
+
+<img src="man/figures/README-plot-market-1.png" width="100%" />
 
 <!-- refs: start -->
 

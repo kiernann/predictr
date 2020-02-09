@@ -6,10 +6,16 @@ output: github_document
 
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
+  warning = FALSE,
+  message = FALSE,
+  error = FALSE,
   collapse = TRUE,
   comment = "#>",
+  out.width = "100%",
   fig.path = "man/figures/README-",
-  out.width = "100%"
+  fig.width = 9,
+  fig.height = 5,
+  dpi = 300
 )
 ```
 
@@ -37,9 +43,20 @@ devtools::install_github("kiernann/predictr")
 
 ## Usage
 
-```{r open-markets}
+```{r print-markets}
+library(tidyverse)
 library(predictr)
-market_price(mid = 3633)
+market_price(mid = 6403) %>% arrange(contract)
+```
+
+```{r plot-market}
+market_history(mid = 3633) %>% 
+  filter(contract %in% c("Sanders", "Biden", "Bloomberg", "Buttigieg")) %>% 
+  ggplot(aes(x = time, y = close)) +
+  geom_line(aes(color = contract), size = 2) +
+  scale_y_continuous(labels = scales::percent) +
+  theme(legend.position = "bottom") +
+  labs(title = "Democratic nominee", color = "Contract", y = "Price", x = "Date")
 ```
 
 <!-- refs: start -->
