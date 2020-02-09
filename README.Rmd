@@ -54,7 +54,7 @@ market_history(mid = 3633) %>%
   filter(contract %in% c("Sanders", "Biden", "Bloomberg", "Buttigieg")) %>% 
   ggplot(aes(x = time, y = close)) +
   geom_line(aes(color = contract), size = 2) +
-  scale_y_continuous(labels = scales::percent) +
+  scale_y_continuous(labels = scales::dollar) +
   theme(legend.position = "bottom") +
   labs(title = "Democratic nominee", color = "Contract", y = "Price", x = "Date")
 ```
@@ -64,7 +64,7 @@ market_history(mid = 3633) %>%
 [life_link]: https://www.tidyverse.org/lifecycle/#experimental
 [cran_badge]: https://www.r-pkg.org/badges/version/predictr
 [cran_link]: https://CRAN.R-project.org/package=predictr
-[trav_badge]: https://travis-ci.org/kiernann/predictr?branch=master
+[trav_badge]: https://travis-ci.org/kiernann/predictr.svg?branch=master
 [trav_link]: https://travis-ci.org/kiernann/predictr
 [cov_badge]: https://codecov.io/gh/kiernann/predictr/branch/master/graph/badge.svg
 [cov_link]: https://codecov.io/gh/kiernann/predictr?branch=master
