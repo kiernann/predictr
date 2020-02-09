@@ -166,7 +166,7 @@ hours. For daily tables, one row per contract per day.</p>
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'>market_history</span>(<span class='kw'>mid</span> <span class='kw'>=</span> <span class='fl'>3633</span>)</div><div class='output co'>#&gt; # A tibble: 2,967 x 10
 #&gt;    time         mid market           cid contract  open  high   low close volume
-#&gt;    &lt;date&gt;     &lt;dbl&gt; &lt;fct&gt;          &lt;int&gt; &lt;fct&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;int&gt;
+#&gt;    &lt;date&gt;     &lt;dbl&gt; &lt;chr&gt;          &lt;int&gt; &lt;fct&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;int&gt;
 #&gt;  1 2019-11-11  3633 2020 Democrat…  7725 Sanders   0.14  0.14 0.13  0.13    8944
 #&gt;  2 2019-11-11  3633 2020 Democrat…  7726 Booker    0.01  0.02 0.01  0.01   37100
 #&gt;  3 2019-11-11  3633 2020 Democrat…  7727 Harris    0.02  0.03 0.02  0.02   10077
@@ -179,7 +179,7 @@ hours. For daily tables, one row per contract per day.</p>
 #&gt; 10 2019-11-11  3633 2020 Democrat…  7734 Klobuch…  0.04  0.04 0.02  0.02    6643
 #&gt; # … with 2,957 more rows</div><div class='input'><span class='fu'>market_history</span>(<span class='kw'>mid</span> <span class='kw'>=</span> <span class='fl'>6400</span>)</div><div class='output co'>#&gt; # A tibble: 36 x 10
 #&gt;    time         mid market           cid contract  open  high   low close volume
-#&gt;    &lt;date&gt;     &lt;dbl&gt; &lt;fct&gt;          &lt;int&gt; &lt;ord&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;int&gt;
+#&gt;    &lt;date&gt;     &lt;dbl&gt; &lt;chr&gt;          &lt;int&gt; &lt;ord&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;int&gt;
 #&gt;  1 2020-02-05  6400 @realDonaldTr… 20957 [290,In…  0.32  0.37  0.2   0.2   15611
 #&gt;  2 2020-02-05  6400 @realDonaldTr… 20958 [250,25…  0.11  0.11  0.07  0.07   4969
 #&gt;  3 2020-02-05  6400 @realDonaldTr… 20959 [230,23…  0.16  0.16  0.04  0.08   6454
