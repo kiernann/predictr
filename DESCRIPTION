@@ -8,6 +8,9 @@ Authors@R:
            email = "kiernann@protonmail.com")
 Description: Query the PredictIt API for market price history.
 License: GPL-3
+URL: https://kiernann.com/predictr
+    https://github.com/kiernann/predictr
+BugReports: https://github.com/kiernann/predictr/issues
 Depends: 
     R (>= 3.2)
 Imports: 
