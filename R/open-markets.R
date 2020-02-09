@@ -4,6 +4,16 @@
 #' @return A data frame of market contracts prices.
 #' @examples
 #' open_markets(split = FALSE)
+#' @format A tibble with 7 variables:
+#' \describe{
+#'   \item{time}{The hour or day of price}
+#'   \item{mid}{Market ID}
+#'   \item{market}{Market question}
+#'   \item{cid}{Contract ID}
+#'   \item{contract}{Question answers}
+#'   \item{last}{Most recent trading price of the contract}
+#'   \item{close}{Price at the end of the previous midnight EST}
+#' }
 #' @importFrom tibble as_tibble
 #' @importFrom jsonlite fromJSON
 #' @importFrom dplyr select
@@ -14,31 +24,16 @@ open_markets <- function(split = FALSE) {
   api <- "https://www.predictit.org/api/marketdata/all/"
   raw <- tibble::as_tibble(jsonlite::fromJSON(api)$markets)
   raw$timeStamp <- lubridate::as_datetime(raw$timeStamp)
-  all <- dplyr::select(
-    .data = raw,
-    time = timeStamp,
-    mid = id,
-    market = shortName,
-    contracts
-  )
-  all <- tidyr::unnest(data = all, col = "contracts")
-  all <- dplyr::select(
-    .data = all,
-    time,
-    mid,
-    market,
-    cid = id,
-    contract = shortName,
-    last = lastTradePrice,
-    # buy_yes = bestBuyYesCost,
-    # buy_no = bestBuyNoCost,
-    # sell_yes = bestSellYesCost,
-    # sell_no = bestSellNoCost,
-    close = lastClosePrice
-  )
+  raw <- raw[, c(7, 1, 3, 6)]
+  names(raw)[1:3] <- c("time", "mid", "market")
+  all <- tidyr::unnest(data = raw, col = "contracts")
+  all <- all[, c(1:4, 8, 10, 15, 5)]
+  names(all)[4:8] <- c("cid", "contract", "last", "close", "end")
   all$contract[which(all$contract == all$market)] <- NA_character_
+  all$end[which(all$end == "N/A")] <- NA
+  all$end <- as.POSIXct(all$end)
   if (split) {
-    dplyr::group_split(all, mid)
+    dplyr::group_split(all, all$mid)
   } else {
     return(all)
   }
