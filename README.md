@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# predictr
+# predictr <a href='https://kiernann.com/predictr'><img src='man/figures/logo.png' align="right" height="139" /></a>
 
 <!-- badges: start -->
 
@@ -22,7 +22,8 @@ these events occuring.
 
 ## Installation
 
-You can install the development version from [GitHub]() with:
+You can install the development version from
+[GitHub](https://github.com/kiernann/predictr) with:
 
 ``` r
 # install.packages("devtools")
@@ -38,15 +39,15 @@ market_price(mid = 6403) %>% arrange(contract)
 #> # A tibble: 9 x 7
 #>   time                  mid market                      cid contract  last close
 #>   <dttm>              <int> <fct>                     <int> <ord>    <dbl> <dbl>
-#> 1 2020-02-09 10:15:49  6403 NH primary margin of vic… 20984 [0,4)     0.43  0.47
-#> 2 2020-02-09 10:15:49  6403 NH primary margin of vic… 20988 [4,5)     0.17  0.17
-#> 3 2020-02-09 10:15:49  6403 NH primary margin of vic… 20990 [5,6)     0.14  0.15
-#> 4 2020-02-09 10:15:49  6403 NH primary margin of vic… 20991 [6,7)     0.09  0.08
-#> 5 2020-02-09 10:15:49  6403 NH primary margin of vic… 20985 [7,8)     0.08  0.09
-#> 6 2020-02-09 10:15:49  6403 NH primary margin of vic… 20986 [8,9)     0.04  0.06
-#> 7 2020-02-09 10:15:49  6403 NH primary margin of vic… 20987 [9,10)    0.03  0.04
-#> 8 2020-02-09 10:15:49  6403 NH primary margin of vic… 20992 [10,11)   0.04  0.03
-#> 9 2020-02-09 10:15:49  6403 NH primary margin of vic… 20989 [11,Inf)  0.11  0.09
+#> 1 2020-02-09 10:44:13  6403 NH primary margin of vic… 20984 [0,4)     0.44  0.47
+#> 2 2020-02-09 10:44:13  6403 NH primary margin of vic… 20988 [4,5)     0.17  0.17
+#> 3 2020-02-09 10:44:13  6403 NH primary margin of vic… 20990 [5,6)     0.14  0.15
+#> 4 2020-02-09 10:44:13  6403 NH primary margin of vic… 20991 [6,7)     0.09  0.08
+#> 5 2020-02-09 10:44:13  6403 NH primary margin of vic… 20985 [7,8)     0.08  0.09
+#> 6 2020-02-09 10:44:13  6403 NH primary margin of vic… 20986 [8,9)     0.04  0.06
+#> 7 2020-02-09 10:44:13  6403 NH primary margin of vic… 20987 [9,10)    0.03  0.04
+#> 8 2020-02-09 10:44:13  6403 NH primary margin of vic… 20992 [10,11)   0.04  0.03
+#> 9 2020-02-09 10:44:13  6403 NH primary margin of vic… 20989 [11,Inf)  0.11  0.09
 ```
 
 ``` r

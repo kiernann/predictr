@@ -19,7 +19,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-# predictr
+# predictr <a href='https://kiernann.com/predictr'><img src='man/figures/logo.png' align="right" height="139" /></a>
 
 <!-- badges: start -->
 [![Lifecycle: experimental][life_badge]][life_link]
@@ -34,7 +34,7 @@ crowdsourced probability of these events occuring.
 
 ## Installation
 
-You can install the development version from [GitHub]() with:
+You can install the development version from [GitHub][gh] with:
 
 ``` r
 # install.packages("devtools")
