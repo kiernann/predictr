@@ -1,3 +1,9 @@
+# predictr 0.0.1
+
+* Create `market_history()`.
+* Remove `dplyr` complexity to avoid global variables.
+* Improve interval contract factorization.
+
 # predictr 0.0.0.9001
 
 * Create `market_price()` for a single market call.
