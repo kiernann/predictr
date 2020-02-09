@@ -32,7 +32,8 @@ market_price <- function(mid) {
     time = raw$timeStamp,
     mid = raw$id,
     market = raw$shortName,
-    end = raw$contracts$dateEnd
+    end = raw$contracts$dateEnd,
+    stringsAsFactors = FALSE
   )
   con <- con[, c(14, 15, 16, 1, 5, 7, 12, 17)]
   names(con)[4:7] <- c("cid", "contract", "last", "close")

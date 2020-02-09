@@ -41,7 +41,9 @@ market_history <- function(mid, hourly = FALSE) {
   raw <- jsonlite::fromJSON(api)
   con <- raw$contracts[, c(1, 5)]
   names(con) <- c("cid", "contract")
-  hist <- tibble::as_tibble(cbind(mid, market = unique(raw$shortName), hist))
+  market <- unique(raw$shortName)
+  hist <- cbind(mid, market, hist, stringsAsFactors = FALSE)
+  hist <- tibble::as_tibble(hist)
   hist <- dplyr::left_join(hist, con, by = "contract")
   if (hourly) {
     hist$time <- lubridate::mdy_hms(hist$time)
