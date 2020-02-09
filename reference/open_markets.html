@@ -8,6 +8,13 @@
 
 <title>List all open markets — open_markets • predictr</title>
 
+<!-- favicons -->
+<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png" />
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -37,6 +44,7 @@
 
 <meta property="og:title" content="List all open markets — open_markets" />
 <meta property="og:description" content="List all open markets" />
+<meta property="og:image" content="https://kiernann.com/predictr/logo.png" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -69,7 +77,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">predictr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.2</span>
       </span>
     </div>
 
@@ -148,16 +156,16 @@
     <pre class="examples"><div class='input'><span class='fu'>open_markets</span>(<span class='kw'>split</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; # A tibble: 1,274 x 8
 #&gt;    time                  mid market   cid contract  last close
 #&gt;    &lt;dttm&gt;              &lt;int&gt; &lt;chr&gt;  &lt;int&gt; &lt;chr&gt;    &lt;dbl&gt; &lt;dbl&gt;
-#&gt;  1 2020-02-09 10:19:24  2721 Which…  4389 Republi… 0.570  0.56
-#&gt;  2 2020-02-09 10:19:24  2721 Which…  4390 Democra… 0.45   0.45
-#&gt;  3 2020-02-09 10:19:24  2721 Which…  4388 Liberta… 0.02   0.02
-#&gt;  4 2020-02-09 10:19:24  2721 Which…  4391 Green    0.02   0.02
-#&gt;  5 2020-02-09 10:19:24  2747 Will …  4495 &lt;NA&gt;     0.05   0.05
-#&gt;  6 2020-02-09 10:19:24  2875 Will …  5121 &lt;NA&gt;     0.05   0.03
-#&gt;  7 2020-02-09 10:19:24  2901 Woman…  5215 &lt;NA&gt;     0.06   0.07
-#&gt;  8 2020-02-09 10:19:24  2902 Will …  5216 &lt;NA&gt;     0.09   0.09
-#&gt;  9 2020-02-09 10:19:24  2903 Will …  5217 &lt;NA&gt;     0.02   0.02
-#&gt; 10 2020-02-09 10:19:24  2992 Will …  5534 &lt;NA&gt;     0.02   0.02
+#&gt;  1 2020-02-09 12:20:08  2721 Which…  4389 Republi…  0.56  0.56
+#&gt;  2 2020-02-09 12:20:08  2721 Which…  4390 Democra…  0.46  0.45
+#&gt;  3 2020-02-09 12:20:08  2721 Which…  4388 Liberta…  0.02  0.02
+#&gt;  4 2020-02-09 12:20:08  2721 Which…  4391 Green     0.02  0.02
+#&gt;  5 2020-02-09 12:20:08  2747 Will …  4495 &lt;NA&gt;      0.05  0.05
+#&gt;  6 2020-02-09 12:20:08  2875 Will …  5121 &lt;NA&gt;      0.05  0.03
+#&gt;  7 2020-02-09 12:20:08  2901 Woman…  5215 &lt;NA&gt;      0.06  0.07
+#&gt;  8 2020-02-09 12:20:08  2902 Will …  5216 &lt;NA&gt;      0.1   0.09
+#&gt;  9 2020-02-09 12:20:08  2903 Will …  5217 &lt;NA&gt;      0.02  0.02
+#&gt; 10 2020-02-09 12:20:08  2992 Will …  5534 &lt;NA&gt;      0.02  0.02
 #&gt; # … with 1,264 more rows, and 1 more variable: end &lt;dttm&gt;</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
