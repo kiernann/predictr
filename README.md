@@ -20,6 +20,20 @@ on the [PredictIt](https://www.predictit.org/) prediction market. The
 price of these contracts represents the crowdsourced probability of
 these events occuring.
 
+## Markets
+
+[Prediction markets](https://en.wikipedia.org/wiki/Prediction_market)
+demonstrate the [efficient market
+hypothesis](https://en.wikipedia.org/wiki/Efficient-market_hypothesis),
+which states that market prices reflect *all* available information.
+Self-interested traders buy and sell contracts tied to a binary outcome.
+These contracts expire for $1 or $0, depending on the outcome.
+
+The more likely an outcome is, the higher the price and the lower the
+payout. As the probability of an outcome changes, traders buy or sell at
+new prices and the equilibrium price updates to reflect the new
+probability.
+
 ## Installation
 
 You can install the development version from
@@ -37,15 +51,15 @@ predictr::market_price(6403)
 #> # A tibble: 9 x 7
 #>   time                  mid market                      cid contract  last close
 #>   <dttm>              <int> <fct>                     <int> <ord>    <dbl> <dbl>
-#> 1 2020-02-09 11:59:30  6403 NH primary margin of vic… 20984 [0,4)     0.43  0.47
-#> 2 2020-02-09 11:59:30  6403 NH primary margin of vic… 20988 [4,5)     0.14  0.17
-#> 3 2020-02-09 11:59:30  6403 NH primary margin of vic… 20990 [5,6)     0.09  0.15
-#> 4 2020-02-09 11:59:30  6403 NH primary margin of vic… 20991 [6,7)     0.09  0.08
-#> 5 2020-02-09 11:59:30  6403 NH primary margin of vic… 20985 [7,8)     0.07  0.09
-#> 6 2020-02-09 11:59:30  6403 NH primary margin of vic… 20986 [8,9)     0.04  0.06
-#> 7 2020-02-09 11:59:30  6403 NH primary margin of vic… 20987 [9,10)    0.03  0.04
-#> 8 2020-02-09 11:59:30  6403 NH primary margin of vic… 20992 [10,11)   0.04  0.03
-#> 9 2020-02-09 11:59:30  6403 NH primary margin of vic… 20989 [11,Inf)  0.11  0.09
+#> 1 2020-02-09 12:15:47  6403 NH primary margin of vic… 20984 [0,4)     0.43  0.47
+#> 2 2020-02-09 12:15:47  6403 NH primary margin of vic… 20988 [4,5)     0.14  0.17
+#> 3 2020-02-09 12:15:47  6403 NH primary margin of vic… 20990 [5,6)     0.09  0.15
+#> 4 2020-02-09 12:15:47  6403 NH primary margin of vic… 20991 [6,7)     0.09  0.08
+#> 5 2020-02-09 12:15:47  6403 NH primary margin of vic… 20985 [7,8)     0.07  0.09
+#> 6 2020-02-09 12:15:47  6403 NH primary margin of vic… 20986 [8,9)     0.04  0.06
+#> 7 2020-02-09 12:15:47  6403 NH primary margin of vic… 20987 [9,10)    0.03  0.04
+#> 8 2020-02-09 12:15:47  6403 NH primary margin of vic… 20992 [10,11)   0.04  0.03
+#> 9 2020-02-09 12:15:47  6403 NH primary margin of vic… 20989 [11,Inf)  0.11  0.09
 ```
 
 Current and historical prices can be automatically plotted with

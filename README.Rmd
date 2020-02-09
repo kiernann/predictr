@@ -32,6 +32,17 @@ The goal of predictr is to access the price of binary contracts trading on the
 [PredictIt][pi] prediction market. The price of these contracts represents the
 crowdsourced probability of these events occuring.
 
+## Markets
+
+[Prediction markets][pm] demonstrate the [efficient market hypothesis][emh],
+which states that market prices reflect _all_ available information.
+Self-interested traders buy and sell contracts tied to a binary outcome. These
+contracts expire for \$1 or \$0, depending on the outcome.
+
+The more likely an outcome is, the higher the price and the lower the payout. As
+the probability of an outcome changes, traders buy or sell at new prices and the
+equilibrium price updates to reflect the new probability.
+
 ## Installation
 
 You can install the development version from [GitHub][gh] with:
@@ -64,6 +75,8 @@ predictr::market_plot(6405, type = "bar")
 [cov_badge]: https://codecov.io/gh/kiernann/predictr/branch/master/graph/badge.svg
 [cov_link]: https://codecov.io/gh/kiernann/predictr?branch=master
 [pi]: https://www.predictit.org/
+[pm]: https://en.wikipedia.org/wiki/Prediction_market
+[emh]: https://en.wikipedia.org/wiki/Efficient-market_hypothesis
 [gh]: https://github.com/kiernann/predictr
 [gg]: https://github.com/tidyverse/ggplot2
 <!-- refs: end -->
