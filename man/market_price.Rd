@@ -2,7 +2,17 @@
 % Please edit documentation in R/market-price.R
 \name{market_price}
 \alias{market_price}
-\title{Single market prices}
+\title{Current market prices}
+\format{A tibble with 7 variables:
+\describe{
+\item{time}{The hour or day of price}
+\item{mid}{Market ID}
+\item{market}{Market question}
+\item{cid}{Contract ID}
+\item{contract}{Question answers}
+\item{last}{Most recent trading price of the contract}
+\item{close}{Price at the end of the previous midnight EST}
+}}
 \usage{
 market_price(mid)
 }
@@ -13,7 +23,7 @@ market_price(mid)
 A data frame of market contracts prices.
 }
 \description{
-Single market prices
+Current market prices
 }
 \examples{
 market_price(mid = 3633)

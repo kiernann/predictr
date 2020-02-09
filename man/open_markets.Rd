@@ -3,6 +3,16 @@
 \name{open_markets}
 \alias{open_markets}
 \title{List all open markets}
+\format{A tibble with 7 variables:
+\describe{
+\item{time}{The hour or day of price}
+\item{mid}{Market ID}
+\item{market}{Market question}
+\item{cid}{Contract ID}
+\item{contract}{Question answers}
+\item{last}{Most recent trading price of the contract}
+\item{close}{Price at the end of the previous midnight EST}
+}}
 \usage{
 open_markets(split = FALSE)
 }
