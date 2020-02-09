@@ -41,5 +41,5 @@ market_price <- function(mid) {
   } else {
     con$end <- lubridate::as_date(con$end)
   }
-  tibble::as_tibble(con)
+  tibble::as_tibble(con[order(con$contract),] )
 }
