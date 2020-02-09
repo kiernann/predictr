@@ -89,7 +89,12 @@
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="https://github.com/kiernann/predictr">
+    <span class="fab fa fab fa-github fa-lg"></span>
+     
+  </a>
+</li>
       </ul>
       
     </div><!--/.nav-collapse -->
@@ -104,7 +109,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>List all open markets</h1>
-    
+    <small class="dont-index">Source: <a href='https://github.com/kiernann/predictr/blob/master/R/open-markets.R'><code>R/open-markets.R</code></a></small>
     <div class="hidden name"><code>open_markets.Rd</code></div>
     </div>
 
@@ -143,16 +148,16 @@
     <pre class="examples"><div class='input'><span class='fu'>open_markets</span>(<span class='kw'>split</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; # A tibble: 1,274 x 8
 #&gt;    time                  mid market   cid contract  last close
 #&gt;    &lt;dttm&gt;              &lt;int&gt; &lt;chr&gt;  &lt;int&gt; &lt;chr&gt;    &lt;dbl&gt; &lt;dbl&gt;
-#&gt;  1 2020-02-09 00:05:34  2721 Which…  4389 Republi…  0.56  0.56
-#&gt;  2 2020-02-09 00:05:34  2721 Which…  4390 Democra…  0.45  0.45
-#&gt;  3 2020-02-09 00:05:34  2721 Which…  4388 Liberta…  0.02  0.02
-#&gt;  4 2020-02-09 00:05:34  2721 Which…  4391 Green     0.02  0.02
-#&gt;  5 2020-02-09 00:05:34  2747 Will …  4495 &lt;NA&gt;      0.05  0.05
-#&gt;  6 2020-02-09 00:05:34  2875 Will …  5121 &lt;NA&gt;      0.03  0.03
-#&gt;  7 2020-02-09 00:05:34  2901 Woman…  5215 &lt;NA&gt;      0.07  0.07
-#&gt;  8 2020-02-09 00:05:34  2902 Will …  5216 &lt;NA&gt;      0.09  0.09
-#&gt;  9 2020-02-09 00:05:34  2903 Will …  5217 &lt;NA&gt;      0.02  0.02
-#&gt; 10 2020-02-09 00:05:34  2992 Will …  5534 &lt;NA&gt;      0.02  0.02
+#&gt;  1 2020-02-09 00:23:41  2721 Which…  4389 Republi…  0.56  0.56
+#&gt;  2 2020-02-09 00:23:41  2721 Which…  4390 Democra…  0.45  0.45
+#&gt;  3 2020-02-09 00:23:41  2721 Which…  4388 Liberta…  0.02  0.02
+#&gt;  4 2020-02-09 00:23:41  2721 Which…  4391 Green     0.02  0.02
+#&gt;  5 2020-02-09 00:23:41  2747 Will …  4495 &lt;NA&gt;      0.05  0.05
+#&gt;  6 2020-02-09 00:23:41  2875 Will …  5121 &lt;NA&gt;      0.03  0.03
+#&gt;  7 2020-02-09 00:23:41  2901 Woman…  5215 &lt;NA&gt;      0.07  0.07
+#&gt;  8 2020-02-09 00:23:41  2902 Will …  5216 &lt;NA&gt;      0.09  0.09
+#&gt;  9 2020-02-09 00:23:41  2903 Will …  5217 &lt;NA&gt;      0.02  0.02
+#&gt; 10 2020-02-09 00:23:41  2992 Will …  5534 &lt;NA&gt;      0.02  0.02
 #&gt; # … with 1,264 more rows, and 1 more variable: end &lt;dttm&gt;</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

@@ -89,7 +89,12 @@
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="https://github.com/kiernann/predictr">
+    <span class="fab fa fab fa-github fa-lg"></span>
+     
+  </a>
+</li>
       </ul>
       
     </div><!--/.nav-collapse -->
@@ -104,7 +109,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Current market prices</h1>
-    
+    <small class="dont-index">Source: <a href='https://github.com/kiernann/predictr/blob/master/R/market-price.R'><code>R/market-price.R</code></a></small>
     <div class="hidden name"><code>market_price.Rd</code></div>
     </div>
 
@@ -143,38 +148,38 @@
     <pre class="examples"><div class='input'><span class='fu'>market_price</span>(<span class='kw'>mid</span> <span class='kw'>=</span> <span class='fl'>3633</span>)</div><div class='output co'>#&gt; # A tibble: 33 x 7
 #&gt;    time                  mid market                     cid contract  last close
 #&gt;    &lt;dttm&gt;              &lt;int&gt; &lt;fct&gt;                    &lt;int&gt; &lt;fct&gt;    &lt;dbl&gt; &lt;dbl&gt;
-#&gt;  1 2020-02-09 00:05:15  3633 2020 Democratic nominee?  7725 Sanders   0.46  0.46
-#&gt;  2 2020-02-09 00:05:15  3633 2020 Democratic nominee? 13871 Bloombe…  0.23  0.23
-#&gt;  3 2020-02-09 00:05:15  3633 2020 Democratic nominee? 14769 Buttigi…  0.17  0.16
-#&gt;  4 2020-02-09 00:05:15  3633 2020 Democratic nominee?  7729 Biden     0.12  0.13
-#&gt;  5 2020-02-09 00:05:15  3633 2020 Democratic nominee?  7730 Warren    0.06  0.05
-#&gt;  6 2020-02-09 00:05:15  3633 2020 Democratic nominee?  7734 Klobuch…  0.05  0.04
-#&gt;  7 2020-02-09 00:05:15  3633 2020 Democratic nominee? 13491 Clinton   0.05  0.04
-#&gt;  8 2020-02-09 00:05:15  3633 2020 Democratic nominee? 14670 Yang      0.02  0.02
-#&gt;  9 2020-02-09 00:05:15  3633 2020 Democratic nominee?  7726 Booker    0.01  0.01
-#&gt; 10 2020-02-09 00:05:15  3633 2020 Democratic nominee?  7727 Harris    0.01  0.01
+#&gt;  1 2020-02-09 00:23:41  3633 2020 Democratic nominee?  7725 Sanders   0.45  0.46
+#&gt;  2 2020-02-09 00:23:41  3633 2020 Democratic nominee? 13871 Bloombe…  0.23  0.23
+#&gt;  3 2020-02-09 00:23:41  3633 2020 Democratic nominee? 14769 Buttigi…  0.16  0.16
+#&gt;  4 2020-02-09 00:23:41  3633 2020 Democratic nominee?  7729 Biden     0.12  0.13
+#&gt;  5 2020-02-09 00:23:41  3633 2020 Democratic nominee?  7730 Warren    0.05  0.05
+#&gt;  6 2020-02-09 00:23:41  3633 2020 Democratic nominee?  7734 Klobuch…  0.04  0.04
+#&gt;  7 2020-02-09 00:23:41  3633 2020 Democratic nominee? 13491 Clinton   0.04  0.04
+#&gt;  8 2020-02-09 00:23:41  3633 2020 Democratic nominee? 14670 Yang      0.02  0.02
+#&gt;  9 2020-02-09 00:23:41  3633 2020 Democratic nominee?  7726 Booker    0.01  0.01
+#&gt; 10 2020-02-09 00:23:41  3633 2020 Democratic nominee?  7727 Harris    0.01  0.01
 #&gt; # … with 23 more rows</div><div class='input'><span class='fu'>market_price</span>(<span class='kw'>mid</span> <span class='kw'>=</span> <span class='fl'>6400</span>)</div><div class='output co'>#&gt; # A tibble: 9 x 8
 #&gt;   time                  mid market           cid contract  last close end       
 #&gt;   &lt;dttm&gt;              &lt;int&gt; &lt;fct&gt;          &lt;int&gt; &lt;ord&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;date&gt;    
-#&gt; 1 2020-02-09 00:05:31  6400 @realDonaldTr… 20957 [290,In…  0.48  0.48 2020-02-12
-#&gt; 2 2020-02-09 00:05:31  6400 @realDonaldTr… 20962 [280,28…  0.14  0.14 2020-02-12
-#&gt; 3 2020-02-09 00:05:31  6400 @realDonaldTr… 20964 [270,27…  0.12  0.12 2020-02-12
-#&gt; 4 2020-02-09 00:05:31  6400 @realDonaldTr… 20965 [260,26…  0.09  0.09 2020-02-12
-#&gt; 5 2020-02-09 00:05:31  6400 @realDonaldTr… 20958 [250,25…  0.08  0.08 2020-02-12
-#&gt; 6 2020-02-09 00:05:31  6400 @realDonaldTr… 20960 [240,24…  0.07  0.07 2020-02-12
-#&gt; 7 2020-02-09 00:05:31  6400 @realDonaldTr… 20959 [230,23…  0.06  0.04 2020-02-12
-#&gt; 8 2020-02-09 00:05:31  6400 @realDonaldTr… 20963 [0,219]   0.05  0.05 2020-02-12
-#&gt; 9 2020-02-09 00:05:31  6400 @realDonaldTr… 20961 [220,22…  0.03  0.03 2020-02-12</div><div class='input'><span class='fu'>market_price</span>(<span class='kw'>mid</span> <span class='kw'>=</span> <span class='fl'>6360</span>)</div><div class='output co'>#&gt; # A tibble: 8 x 7
+#&gt; 1 2020-02-09 00:23:36  6400 @realDonaldTr… 20957 [290,In…  0.48  0.48 2020-02-12
+#&gt; 2 2020-02-09 00:23:36  6400 @realDonaldTr… 20962 [280,28…  0.14  0.14 2020-02-12
+#&gt; 3 2020-02-09 00:23:36  6400 @realDonaldTr… 20964 [270,27…  0.12  0.12 2020-02-12
+#&gt; 4 2020-02-09 00:23:36  6400 @realDonaldTr… 20965 [260,26…  0.1   0.09 2020-02-12
+#&gt; 5 2020-02-09 00:23:36  6400 @realDonaldTr… 20958 [250,25…  0.08  0.08 2020-02-12
+#&gt; 6 2020-02-09 00:23:36  6400 @realDonaldTr… 20960 [240,24…  0.07  0.07 2020-02-12
+#&gt; 7 2020-02-09 00:23:36  6400 @realDonaldTr… 20959 [230,23…  0.06  0.04 2020-02-12
+#&gt; 8 2020-02-09 00:23:36  6400 @realDonaldTr… 20963 [0,219]   0.05  0.05 2020-02-12
+#&gt; 9 2020-02-09 00:23:36  6400 @realDonaldTr… 20961 [220,22…  0.04  0.03 2020-02-12</div><div class='input'><span class='fu'>market_price</span>(<span class='kw'>mid</span> <span class='kw'>=</span> <span class='fl'>6360</span>)</div><div class='output co'>#&gt; # A tibble: 8 x 7
 #&gt;   time                  mid market                      cid contract  last close
 #&gt;   &lt;dttm&gt;              &lt;int&gt; &lt;fct&gt;                     &lt;int&gt; &lt;ord&gt;    &lt;dbl&gt; &lt;dbl&gt;
-#&gt; 1 2020-02-09 00:05:32  6360 Iowa caucuses margin of … 20655 [0,1)     0.95  0.95
-#&gt; 2 2020-02-09 00:05:32  6360 Iowa caucuses margin of … 20656 [1,2)     0.06  0.05
-#&gt; 3 2020-02-09 00:05:32  6360 Iowa caucuses margin of … 20657 [2,3)     0.02  0.02
-#&gt; 4 2020-02-09 00:05:32  6360 Iowa caucuses margin of … 20658 [3,4)     0.01  0.01
-#&gt; 5 2020-02-09 00:05:32  6360 Iowa caucuses margin of … 20659 [4,5)     0.01  0.01
-#&gt; 6 2020-02-09 00:05:32  6360 Iowa caucuses margin of … 20660 [7,Inf)   0.01  0.01
-#&gt; 7 2020-02-09 00:05:32  6360 Iowa caucuses margin of … 20661 [5,6)     0.01  0.01
-#&gt; 8 2020-02-09 00:05:32  6360 Iowa caucuses margin of … 20662 [6,7)     0.01  0.01</div></pre>
+#&gt; 1 2020-02-09 00:23:37  6360 Iowa caucuses margin of … 20655 [0,1)     0.96  0.95
+#&gt; 2 2020-02-09 00:23:37  6360 Iowa caucuses margin of … 20656 [1,2)     0.05  0.05
+#&gt; 3 2020-02-09 00:23:37  6360 Iowa caucuses margin of … 20657 [2,3)     0.02  0.02
+#&gt; 4 2020-02-09 00:23:37  6360 Iowa caucuses margin of … 20658 [3,4)     0.01  0.01
+#&gt; 5 2020-02-09 00:23:37  6360 Iowa caucuses margin of … 20659 [4,5)     0.01  0.01
+#&gt; 6 2020-02-09 00:23:37  6360 Iowa caucuses margin of … 20660 [7,Inf)   0.01  0.01
+#&gt; 7 2020-02-09 00:23:37  6360 Iowa caucuses margin of … 20661 [5,6)     0.01  0.01
+#&gt; 8 2020-02-09 00:23:37  6360 Iowa caucuses margin of … 20662 [6,7)     0.01  0.01</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
