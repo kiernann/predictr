@@ -4,16 +4,15 @@
 \alias{market_plot}
 \title{Plot market types}
 \usage{
-market_plot(mid, type = c("line", "bar"), n = 4)
+market_plot(data, color = 4)
 }
 \arguments{
-\item{mid}{The integer market ID.}
-
-\item{type}{One of "line" or "bar", calls either \code{\link[=market_history]{market_history()}} or
+\item{data}{A data frame created by either \code{\link[=market_history]{market_history()}} or
 \code{\link[=market_price]{market_price()}}. For price history plots, \code{\link[ggplot2:geom_line]{ggplot2::geom_line()}} is used;
 for current prices, \code{\link[ggplot2:geom_col]{ggplot2::geom_col()}} is used.}
 
-\item{n}{If "line", the number of current top contracts lines highlight.}
+\item{color}{The number of current top contracts lines highlighted if \code{data}
+is daily or hourly.}
 }
 \value{
 A ggplot object.
@@ -22,6 +21,6 @@ A ggplot object.
 Plot market types
 }
 \examples{
-market_plot(mid = 3633, type = "line")
-market_plot(mid = 6405, type = "bar")
+market_plot(market_history(3633), color = 4)
+market_plot(market_price(6405))
 }

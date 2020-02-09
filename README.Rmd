@@ -28,9 +28,10 @@ knitr::opts_chunk$set(
 [![Codecov test coverage][cov_badge]][cov_link]
 <!-- badges: end -->
 
-The goal of predictr is to access the price of binary contracts trading on the
-[PredictIt][pi] prediction market. The price of these contracts represents the
-crowdsourced probability of these events occuring.
+The goal of predictr is to access the [PredictIt][pi] API and determine the
+price of binary futures contracts trading on the prediction market. Data is
+returned as tidy tibbles, with unique rows for contract prices at a given point
+in time.
 
 ## Markets
 
@@ -55,14 +56,15 @@ devtools::install_github("kiernann/predictr")
 ## Usage
 
 ```{r print-markets}
-predictr::market_price(6403)
+library(predictr)
+market_price(6403)
 ```
 
 Current and historical prices can be automatically plotted with [ggplot2][gg].
 
 ```{r plot-market}
-predictr::market_plot(3633, type = "line")
-predictr::market_plot(6405, type = "bar")
+market_plot(market_history(3633), color = 4)
+market_plot(market_price(6403))
 ```
 
 <!-- refs: start -->

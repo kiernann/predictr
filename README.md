@@ -15,10 +15,11 @@ status](https://travis-ci.org/kiernann/predictr.svg?branch=master)](https://trav
 coverage](https://codecov.io/gh/kiernann/predictr/branch/master/graph/badge.svg)](https://codecov.io/gh/kiernann/predictr?branch=master)
 <!-- badges: end -->
 
-The goal of predictr is to access the price of binary contracts trading
-on the [PredictIt](https://www.predictit.org/) prediction market. The
-price of these contracts represents the crowdsourced probability of
-these events occuring.
+The goal of predictr is to access the
+[PredictIt](https://www.predictit.org/) API and determine the price of
+binary futures contracts trading on the prediction market. Data is
+returned as tidy tibbles, with unique rows for contract prices at a
+given point in time.
 
 ## Markets
 
@@ -47,32 +48,33 @@ devtools::install_github("kiernann/predictr")
 ## Usage
 
 ``` r
-predictr::market_price(6403)
+library(predictr)
+market_price(6403)
 #> # A tibble: 9 x 7
 #>   time                  mid market                      cid contract  last close
-#>   <dttm>              <int> <fct>                     <int> <ord>    <dbl> <dbl>
-#> 1 2020-02-09 12:15:47  6403 NH primary margin of vic… 20984 [0,4)     0.43  0.47
-#> 2 2020-02-09 12:15:47  6403 NH primary margin of vic… 20988 [4,5)     0.14  0.17
-#> 3 2020-02-09 12:15:47  6403 NH primary margin of vic… 20990 [5,6)     0.09  0.15
-#> 4 2020-02-09 12:15:47  6403 NH primary margin of vic… 20991 [6,7)     0.09  0.08
-#> 5 2020-02-09 12:15:47  6403 NH primary margin of vic… 20985 [7,8)     0.07  0.09
-#> 6 2020-02-09 12:15:47  6403 NH primary margin of vic… 20986 [8,9)     0.04  0.06
-#> 7 2020-02-09 12:15:47  6403 NH primary margin of vic… 20987 [9,10)    0.03  0.04
-#> 8 2020-02-09 12:15:47  6403 NH primary margin of vic… 20992 [10,11)   0.04  0.03
-#> 9 2020-02-09 12:15:47  6403 NH primary margin of vic… 20989 [11,Inf)  0.11  0.09
+#>   <dttm>              <int> <chr>                     <int> <ord>    <dbl> <dbl>
+#> 1 2020-02-09 16:11:38  6403 NH primary margin of vic… 20984 [0,4)     0.37  0.47
+#> 2 2020-02-09 16:11:38  6403 NH primary margin of vic… 20988 [4,5)     0.15  0.17
+#> 3 2020-02-09 16:11:38  6403 NH primary margin of vic… 20990 [5,6)     0.11  0.15
+#> 4 2020-02-09 16:11:38  6403 NH primary margin of vic… 20991 [6,7)     0.11  0.08
+#> 5 2020-02-09 16:11:38  6403 NH primary margin of vic… 20985 [7,8)     0.08  0.09
+#> 6 2020-02-09 16:11:38  6403 NH primary margin of vic… 20986 [8,9)     0.05  0.06
+#> 7 2020-02-09 16:11:38  6403 NH primary margin of vic… 20987 [9,10)    0.04  0.04
+#> 8 2020-02-09 16:11:38  6403 NH primary margin of vic… 20992 [10,11)   0.03  0.03
+#> 9 2020-02-09 16:11:38  6403 NH primary margin of vic… 20989 [11,Inf)  0.05  0.09
 ```
 
 Current and historical prices can be automatically plotted with
 [ggplot2](https://github.com/tidyverse/ggplot2).
 
 ``` r
-predictr::market_plot(3633, type = "line")
+market_plot(market_history(3633), color = 4)
 ```
 
 <img src="man/figures/README-plot-market-1.png" width="100%" />
 
 ``` r
-predictr::market_plot(6405, type = "bar")
+market_plot(market_price(6403))
 ```
 
 <img src="man/figures/README-plot-market-2.png" width="100%" />
