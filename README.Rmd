@@ -44,19 +44,14 @@ devtools::install_github("kiernann/predictr")
 ## Usage
 
 ```{r print-markets}
-library(tidyverse)
-library(predictr)
-market_price(mid = 6403) %>% arrange(contract)
+predictr::market_price(6403)
 ```
 
+Current and historical prices can be automatically plotted with [ggplot2][gg].
+
 ```{r plot-market}
-market_history(mid = 3633) %>% 
-  filter(contract %in% c("Sanders", "Biden", "Bloomberg", "Buttigieg")) %>% 
-  ggplot(aes(x = time, y = close)) +
-  geom_line(aes(color = contract), size = 2) +
-  scale_y_continuous(labels = scales::dollar) +
-  theme(legend.position = "bottom") +
-  labs(title = "Democratic nominee", color = "Contract", y = "Price", x = "Date")
+predictr::market_plot(3633, type = "line")
+predictr::market_plot(6405, type = "bar")
 ```
 
 <!-- refs: start -->
@@ -70,4 +65,5 @@ market_history(mid = 3633) %>%
 [cov_link]: https://codecov.io/gh/kiernann/predictr?branch=master
 [pi]: https://www.predictit.org/
 [gh]: https://github.com/kiernann/predictr
+[gg]: https://github.com/tidyverse/ggplot2
 <!-- refs: end -->

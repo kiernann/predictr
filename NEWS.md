@@ -1,3 +1,8 @@
+# predictr 0.0.2
+
+* Create `market_plot()` using ggplot2.
+* Order `market_price()` by contract factor.
+
 # predictr 0.0.1
 
 * Create `market_history()`.
