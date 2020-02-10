@@ -4,19 +4,32 @@
 \alias{contract_convert}
 \title{Convert contract names to factor intervals}
 \usage{
-contract_convert(x)
+contract_convert(x, decimal = FALSE)
 }
 \arguments{
 \item{x}{A character vector of contract names.}
+
+\item{decimal}{Should percentages be converted to decimals?}
 }
 \value{
-A factor vector intervals in proper notation.
+A interval factor, unique factor, or logical vector.
 }
 \description{
-Convert contract names to factor intervals
+Perfoms one of three conversions in \code{\link[=market_price]{market_price()}} and \code{\link[=market_history]{market_history()}}:
+\enumerate{
+\item For interval contracts (e.g., "220 - 229", "9\% or more", etc.), convert
+the character strings to proper interval notation.
+\item For contracts with multiple discrete outcomes (e.g., Candidate names),
+convert the chracter vector to simple factors.
+\item For markets with a single binary question (e.g., "Will the Democrats have
+a brokered convention in 2020?"), contracts returned are always "Yes" which
+is converted to \code{TRUE}.
+}
 }
 \examples{
+contract_convert(c("4 or fewer", "8 or more", "5", "6", "7"))
 contract_convert(c("3\%-", "12\%+", "9\% - 12\%", "3\% - 6\%", "6\% - 9\%"))
-contract_convert(c("219-", "220 - 229", "240+",  "230 - 239"))
+contract_convert(c("219-", "220 to 229", "240+",  "230 to 239"))
 contract_convert(c("Sanders", "Biden", "Warren", "Buttigieg"))
+contract_convert(c("Brokered convention?", "Brokered convention?"))
 }

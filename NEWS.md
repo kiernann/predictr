@@ -3,6 +3,7 @@
 * Create `market_plot()` using ggplot2.
 * Order `market_price()` by contract factor.
 * Set market names as character strings.
+* Convert binary contracts to logical.
 
 # predictr 0.0.1
 
