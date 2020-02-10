@@ -63,8 +63,8 @@ market_price(6403)
 Current and historical prices can be automatically plotted with [ggplot2][gg].
 
 ```{r plot-market}
-market_plot(market_history(3633), color = 4)
 market_plot(market_price(6403))
+market_plot(market_history(3633), color = 4)
 ```
 
 <!-- refs: start -->
