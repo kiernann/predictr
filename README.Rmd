@@ -74,7 +74,7 @@ market_plot(market_price(6403))
 [cran_link]: https://CRAN.R-project.org/package=predictr
 [trav_badge]: https://travis-ci.org/kiernann/predictr.svg?branch=master
 [trav_link]: https://travis-ci.org/kiernann/predictr
-[cov_badge]: https://codecov.io/gh/kiernann/predictr/branch/master/graph/badge.svg
+[cov_badge]: https://img.shields.io/codecov/c/github/kiernann/predictr/master.svg
 [cov_link]: https://codecov.io/gh/kiernann/predictr?branch=master
 [pi]: https://www.predictit.org/
 [pm]: https://en.wikipedia.org/wiki/Prediction_market
