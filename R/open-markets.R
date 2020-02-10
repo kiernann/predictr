@@ -1,6 +1,6 @@
 #' List all open markets
 #'
-#' @param split Should the data frame be split as a list of markets?
+#' @param split Should the data frame be split into a list of markets?
 #' @return A data frame of market contracts prices.
 #' @examples
 #' open_markets(split = FALSE)
@@ -33,7 +33,7 @@ open_markets <- function(split = FALSE) {
   all$end[which(all$end == "N/A")] <- NA
   all$end <- as.POSIXct(all$end)
   if (split) {
-    dplyr::group_split(all, all$mid)
+    split(all, all$mid)
   } else {
     return(all)
   }

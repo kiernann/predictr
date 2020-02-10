@@ -17,7 +17,7 @@
 open_markets(split = FALSE)
 }
 \arguments{
-\item{split}{Should the data frame be split as a list of markets?}
+\item{split}{Should the data frame be split into a list of markets?}
 }
 \value{
 A data frame of market contracts prices.
