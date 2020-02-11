@@ -51,17 +51,17 @@ devtools::install_github("kiernann/predictr")
 library(predictr)
 market_price(6403)
 #> # A tibble: 9 x 7
-#>   time                  mid market                      cid contract  last close
-#>   <dttm>              <int> <chr>                     <int> <ord>    <dbl> <dbl>
-#> 1 2020-02-10 16:34:54  6403 NH primary margin of vic… 20984 [0,4)     0.3   0.33
-#> 2 2020-02-10 16:34:54  6403 NH primary margin of vic… 20988 [4,5)     0.13  0.17
-#> 3 2020-02-10 16:34:54  6403 NH primary margin of vic… 20990 [5,6)     0.12  0.17
-#> 4 2020-02-10 16:34:54  6403 NH primary margin of vic… 20991 [6,7)     0.1   0.14
-#> 5 2020-02-10 16:34:54  6403 NH primary margin of vic… 20985 [7,8)     0.11  0.1 
-#> 6 2020-02-10 16:34:54  6403 NH primary margin of vic… 20986 [8,9)     0.07  0.08
-#> 7 2020-02-10 16:34:54  6403 NH primary margin of vic… 20987 [9,10)    0.07  0.06
-#> 8 2020-02-10 16:34:54  6403 NH primary margin of vic… 20992 [10,11)   0.06  0.06
-#> 9 2020-02-10 16:34:54  6403 NH primary margin of vic… 20989 [11,100]  0.12  0.08
+#>   time                  mid market                          cid contract  last close
+#>   <dttm>              <int> <chr>                         <int> <ord>    <dbl> <dbl>
+#> 1 2020-02-10 22:08:34  6403 NH primary margin of victory? 20984 [0,4)     0.3   0.33
+#> 2 2020-02-10 22:08:34  6403 NH primary margin of victory? 20988 [4,5)     0.13  0.17
+#> 3 2020-02-10 22:08:34  6403 NH primary margin of victory? 20990 [5,6)     0.12  0.17
+#> 4 2020-02-10 22:08:34  6403 NH primary margin of victory? 20991 [6,7)     0.11  0.14
+#> 5 2020-02-10 22:08:34  6403 NH primary margin of victory? 20985 [7,8)     0.11  0.1 
+#> 6 2020-02-10 22:08:34  6403 NH primary margin of victory? 20986 [8,9)     0.09  0.08
+#> 7 2020-02-10 22:08:34  6403 NH primary margin of victory? 20987 [9,10)    0.08  0.06
+#> 8 2020-02-10 22:08:34  6403 NH primary margin of victory? 20992 [10,11)   0.07  0.06
+#> 9 2020-02-10 22:08:34  6403 NH primary margin of victory? 20989 [11,100]  0.18  0.08
 ```
 
 Current and historical prices can be automatically plotted with
