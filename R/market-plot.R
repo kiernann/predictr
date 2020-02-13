@@ -17,8 +17,8 @@ market_plot <- function(data, color = 4) {
   bar <- length(unique(data$time)) == 1
   if (bar) {
     ggplot2::ggplot(data, ggplot2::aes_string(x = "contract")) +
-      ggplot2::geom_col(ggplot2::aes_string(y = "close", fill = "contract")) +
-      ggplot2::scale_fill_viridis_d(end = 0.5, guide = FALSE) +
+      ggplot2::geom_col(ggplot2::aes_string(y = "close", fill = "close")) +
+      ggplot2::scale_fill_viridis_c(end = 0.5, guide = FALSE) +
       ggplot2::scale_y_continuous(labels = scales::dollar) +
       ggplot2::theme(panel.grid.major.x = ggplot2::element_blank()) +
       ggplot2::labs(
