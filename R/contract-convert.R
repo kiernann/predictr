@@ -33,9 +33,6 @@ contract_convert <- function(x, decimal = FALSE) {
   x <- stringr::str_replace(x, "\\sto\\s", " - ")
   x <- stringr::str_remove_all(x, "[^[\\+\\d\\s\\.-]]")
   x <- stringr::str_remove(x, "(?<=\\d)(\\.0)(?=\\D)")
-
-  y <- x
-
   if (any(stringr::str_detect(x, sprintf("^%s$", rx)))) {
     x <- stringr::str_replace(x, paste0(rx, "(?:-$)"), "[0,\\1]")
     x <- stringr::str_replace(x, paste0(rx, "(?:\\+$)"), "[\\1, Inf)")
@@ -47,7 +44,7 @@ contract_convert <- function(x, decimal = FALSE) {
     if (decimal) {
       x <- stringr::str_replace_all(x, rx, function(p) as.numeric(p)/100)
     }
-    n <- str_extract_all(x, rx)
+    n <- stringr::str_extract_all(x, "(\\d{1,3}(?:\\.\\d+)?)|Inf")
     if (length(n) >= 2) {
       d <- abs(diff(as.numeric(c(n[[2]][1], n[[1]][2]))))
       if (p & round(d, digits = 2) == 0.1) {
