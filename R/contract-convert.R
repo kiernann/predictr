@@ -1,10 +1,10 @@
 #' Convert contract names to factor intervals
 #'
-#' Perfoms one of three conversions in [market_price()] and [market_history()]:
+#' Performs one of three conversions in [market_price()] and [market_history()]:
 #' 1. For interval contracts (e.g., "220 - 229", "9% or more", etc.), convert
 #' the character strings to proper interval notation.
 #' 2. For contracts with multiple discrete outcomes (e.g., Candidate names),
-#' convert the chracter vector to simple factors.
+#' convert the character vector to simple factors.
 #' 3. For markets with a single binary question (e.g., "Will the Democrats have
 #' a brokered convention in 2020?"), contracts returned are always "Yes" which
 #' is converted to `TRUE`.
@@ -33,6 +33,9 @@ contract_convert <- function(x, decimal = FALSE) {
   x <- stringr::str_replace(x, "\\sto\\s", " - ")
   x <- stringr::str_remove_all(x, "[^[\\+\\d\\s\\.-]]")
   x <- stringr::str_remove(x, "(?<=\\d)(\\.0)(?=\\D)")
+
+  y <- x
+
   if (any(stringr::str_detect(x, sprintf("^%s$", rx)))) {
     x <- stringr::str_replace(x, paste0(rx, "(?:-$)"), "[0,\\1]")
     x <- stringr::str_replace(x, paste0(rx, "(?:\\+$)"), "[\\1, Inf)")
@@ -43,6 +46,17 @@ contract_convert <- function(x, decimal = FALSE) {
     x <- stringr::str_replace(x, paste(rx, "-", rx), "[\\1,\\2)")
     if (decimal) {
       x <- stringr::str_replace_all(x, rx, function(p) as.numeric(p)/100)
+    }
+    n <- str_extract_all(x, rx)
+    if (length(n) >= 2) {
+      d <- abs(diff(as.numeric(c(n[[2]][1], n[[1]][2]))))
+      if (p & round(d, digits = 2) == 0.1) {
+        x <- stringr::str_replace_all(
+          string = x,
+          pattern = paste0(rx, "(?=\\)$)"),
+          replacement = function(n) as.numeric(n) + 0.1
+        )
+      }
     }
   } else if (any(stringr::str_detect(x, paste(rx, "-", rx)))) {
     x <- stringr::str_replace(x, paste0(rx, "(?:-$)"), "[0,\\1]")

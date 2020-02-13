@@ -15,12 +15,12 @@ contract_convert(x, decimal = FALSE)
 A interval factor, unique factor, or logical vector.
 }
 \description{
-Perfoms one of three conversions in \code{\link[=market_price]{market_price()}} and \code{\link[=market_history]{market_history()}}:
+Performs one of three conversions in \code{\link[=market_price]{market_price()}} and \code{\link[=market_history]{market_history()}}:
 \enumerate{
 \item For interval contracts (e.g., "220 - 229", "9\% or more", etc.), convert
 the character strings to proper interval notation.
 \item For contracts with multiple discrete outcomes (e.g., Candidate names),
-convert the chracter vector to simple factors.
+convert the character vector to simple factors.
 \item For markets with a single binary question (e.g., "Will the Democrats have
 a brokered convention in 2020?"), contracts returned are always "Yes" which
 is converted to \code{TRUE}.
