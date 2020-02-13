@@ -94,6 +94,18 @@ hours. For daily tables, one row per contract per day." />
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Articles
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="../articles/prediction-markets.html">Prediction Markets</a>
+    </li>
+  </ul>
+</li>
 <li>
   <a href="../news/index.html">Changelog</a>
 </li>
@@ -164,20 +176,20 @@ hours. For daily tables, one row per contract per day.</p>
     <p>A data frame of market contract prices over time.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>market_history</span>(<span class='kw'>mid</span> <span class='kw'>=</span> <span class='fl'>3633</span>)</div><div class='output co'>#&gt; # A tibble: 2,968 x 10
+    <pre class="examples"><div class='input'><span class='fu'>market_history</span>(<span class='kw'>mid</span> <span class='kw'>=</span> <span class='fl'>3633</span>)</div><div class='output co'>#&gt; # A tibble: 2,970 x 10
 #&gt;    time         mid market           cid contract  open  high   low close volume
 #&gt;    &lt;date&gt;     &lt;dbl&gt; &lt;chr&gt;          &lt;int&gt; &lt;fct&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;int&gt;
-#&gt;  1 2019-11-12  3633 2020 Democrat…  7725 Sanders  0.13   0.15  0.13  0.14  11914
-#&gt;  2 2019-11-12  3633 2020 Democrat…  7726 Booker   0.01   0.02  0.01  0.01   2992
-#&gt;  3 2019-11-12  3633 2020 Democrat…  7727 Harris   0.02   0.03  0.02  0.02   9197
-#&gt;  4 2019-11-12  3633 2020 Democrat…  7728 Gillibr… 0.01   0.01  0.01  0.01      0
-#&gt;  5 2019-11-12  3633 2020 Democrat…  7729 Biden    0.24   0.24  0.23  0.23  19729
-#&gt;  6 2019-11-12  3633 2020 Democrat…  7730 Warren   0.290  0.3   0.25  0.27  24148
-#&gt;  7 2019-11-12  3633 2020 Democrat…  7731 Cuomo    0.01   0.01  0.01  0.01      0
-#&gt;  8 2019-11-12  3633 2020 Democrat…  7732 Zuckerb… 0.01   0.01  0.01  0.01      0
-#&gt;  9 2019-11-12  3633 2020 Democrat…  7733 Kaine    0.01   0.01  0.01  0.01      0
-#&gt; 10 2019-11-12  3633 2020 Democrat…  7734 Klobuch… 0.02   0.04  0.02  0.02   8854
-#&gt; # … with 2,958 more rows</div><div class='input'><span class='fu'>market_history</span>(<span class='kw'>mid</span> <span class='kw'>=</span> <span class='fl'>6400</span>)</div><div class='output co'>#&gt; # A tibble: 45 x 10
+#&gt;  1 2019-11-15  3633 2020 Democrat…  7725 Sanders   0.14 0.15   0.13 0.15   16972
+#&gt;  2 2019-11-15  3633 2020 Democrat…  7726 Booker    0.01 0.01   0.01 0.01     360
+#&gt;  3 2019-11-15  3633 2020 Democrat…  7727 Harris    0.03 0.03   0.02 0.03    2544
+#&gt;  4 2019-11-15  3633 2020 Democrat…  7728 Gillibr…  0.01 0.01   0.01 0.01       0
+#&gt;  5 2019-11-15  3633 2020 Democrat…  7729 Biden     0.23 0.24   0.23 0.23   10026
+#&gt;  6 2019-11-15  3633 2020 Democrat…  7730 Warren    0.28 0.290  0.27 0.290  15397
+#&gt;  7 2019-11-15  3633 2020 Democrat…  7731 Cuomo     0.01 0.01   0.01 0.01       0
+#&gt;  8 2019-11-15  3633 2020 Democrat…  7732 Zuckerb…  0.01 0.01   0.01 0.01       0
+#&gt;  9 2019-11-15  3633 2020 Democrat…  7733 Kaine     0.01 0.01   0.01 0.01       0
+#&gt; 10 2019-11-15  3633 2020 Democrat…  7734 Klobuch…  0.02 0.03   0.02 0.02    3447
+#&gt; # … with 2,960 more rows</div><div class='input'><span class='fu'>market_history</span>(<span class='kw'>mid</span> <span class='kw'>=</span> <span class='fl'>6400</span>)</div><div class='output co'>#&gt; # A tibble: 72 x 10
 #&gt;    time         mid market           cid contract  open  high   low close volume
 #&gt;    &lt;date&gt;     &lt;dbl&gt; &lt;chr&gt;          &lt;int&gt; &lt;ord&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;int&gt;
 #&gt;  1 2020-02-05  6400 @realDonaldTr… 20957 [290, I…  0.32  0.37  0.2   0.2   15611
@@ -190,7 +202,7 @@ hours. For daily tables, one row per contract per day.</p>
 #&gt;  8 2020-02-05  6400 @realDonaldTr… 20964 [270,27…  0.09  0.1   0.05  0.05   5967
 #&gt;  9 2020-02-05  6400 @realDonaldTr… 20965 [260,26…  0.1   0.1   0.05  0.06   5718
 #&gt; 10 2020-02-06  6400 @realDonaldTr… 20957 [290, I…  0.2   0.24  0.09  0.09   9393
-#&gt; # … with 35 more rows</div></pre>
+#&gt; # … with 62 more rows</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
