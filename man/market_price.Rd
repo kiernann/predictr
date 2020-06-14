@@ -3,7 +3,8 @@
 \name{market_price}
 \alias{market_price}
 \title{Current market prices}
-\format{A tibble with 7 variables:
+\format{
+A tibble with 7 variables:
 \describe{
 \item{time}{The hour or day of price}
 \item{mid}{Market ID}
@@ -12,12 +13,15 @@
 \item{contract}{Question answers}
 \item{last}{Most recent trading price of the contract}
 \item{close}{Price at the end of the previous midnight EST}
-}}
+}
+}
 \usage{
-market_price(mid)
+market_price(mid, convert = TRUE)
 }
 \arguments{
 \item{mid}{The integer market ID.}
+
+\item{convert}{Should \code{\link[=contract_convert]{contract_convert()}} be called on \code{shortName}?}
 }
 \value{
 A data frame of market contracts prices.

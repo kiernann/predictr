@@ -3,7 +3,8 @@
 \name{market_history}
 \alias{market_history}
 \title{Market price history}
-\format{A tibble with 10 variables:
+\format{
+A tibble with 10 variables:
 \describe{
 \item{time}{The hour or day of price}
 \item{mid}{Market ID}
