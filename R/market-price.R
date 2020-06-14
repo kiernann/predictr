@@ -1,6 +1,7 @@
 #' Current market prices
 #'
 #' @param mid The integer market ID.
+#' @param convert Should [contract_convert()] be called on `shortName`?
 #' @return A data frame of market contracts prices.
 #' @examples
 #' market_price(mid = 3633)
@@ -21,12 +22,14 @@
 #' @importFrom dplyr select mutate
 #' @importFrom lubridate as_datetime as_date
 #' @export
-market_price <- function(mid) {
+market_price <- function(mid, convert = TRUE) {
   api <- paste0("https://www.predictit.org/api/marketdata/markets/", mid)
   raw <- tibble::as_tibble(jsonlite::fromJSON(api))
   raw$timeStamp <- lubridate::as_datetime(raw$timeStamp)
   con <- raw$contracts
-  con$shortName <- contract_convert(con$shortName)
+  if (convert) {
+    con$shortName <- contract_convert(con$shortName)
+  }
   con <- cbind(
     con,
     time = raw$timeStamp,

@@ -16,14 +16,17 @@ A tibble with 10 variables:
 \item{low}{Low price of hour/day}
 \item{high}{High price of hour/day}
 \item{volume}{Number of shares traded per hour/day}
-}}
+}
+}
 \usage{
-market_history(mid, hourly = FALSE)
+market_history(mid, hourly = FALSE, convert = TRUE)
 }
 \arguments{
 \item{mid}{The integer market ID.}
 
 \item{hourly}{24 hourly rows per contract be returned? If not, 90 daily rows.}
+
+\item{convert}{Should \code{\link[=contract_convert]{contract_convert()}} be called on \code{shortName}?}
 }
 \value{
 A data frame of market contract prices over time.
