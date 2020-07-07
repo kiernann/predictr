@@ -15,7 +15,7 @@ contract_convert(x, decimal = FALSE)
 A interval factor, unique factor, or logical vector.
 }
 \description{
-Performs one of three conversions in \code{\link[=market_price]{market_price()}} and \code{\link[=market_history]{market_history()}}:
+Can perform one of three \strong{rough} conversions:
 \enumerate{
 \item For interval contracts (e.g., "220 - 229", "9\% or more", etc.), convert
 the character strings to proper interval notation.
@@ -25,11 +25,4 @@ convert the character vector to simple factors.
 a brokered convention in 2020?"), contracts returned are always "Yes" which
 is converted to \code{TRUE}.
 }
-}
-\examples{
-contract_convert(c("4 or fewer", "8 or more", "5", "6", "7"))
-contract_convert(c("3\%-", "12\%+", "9\% - 12\%", "3\% - 6\%", "6\% - 9\%"))
-contract_convert(c("219-", "220 to 229", "240+",  "230 to 239"))
-contract_convert(c("Sanders", "Biden", "Warren", "Buttigieg"))
-contract_convert(c("Brokered convention?", "Brokered convention?"))
 }

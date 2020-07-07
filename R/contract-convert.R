@@ -1,6 +1,6 @@
 #' Convert contract names to factor intervals
 #'
-#' Performs one of three conversions in [market_price()] and [market_history()]:
+#' Can perform one of three **rough** conversions:
 #' 1. For interval contracts (e.g., "220 - 229", "9% or more", etc.), convert
 #' the character strings to proper interval notation.
 #' 2. For contracts with multiple discrete outcomes (e.g., Candidate names),
@@ -12,14 +12,12 @@
 #' @param x A character vector of contract names.
 #' @param decimal Should percentages be converted to decimals?
 #' @return A interval factor, unique factor, or logical vector.
-#' @examples
-#' contract_convert(c("4 or fewer", "8 or more", "5", "6", "7"))
-#' contract_convert(c("3%-", "12%+", "9% - 12%", "3% - 6%", "6% - 9%"))
-#' contract_convert(c("219-", "220 to 229", "240+",  "230 to 239"))
-#' contract_convert(c("Sanders", "Biden", "Warren", "Buttigieg"))
-#' contract_convert(c("Brokered convention?", "Brokered convention?"))
 #' @importFrom stringr str_remove_all str_replace str_replace_all str_detect str_extract_all
-#' @export
+# contract_convert(c("4 or fewer", "8 or more", "5", "6", "7"))
+# contract_convert(c("3%-", "12%+", "9% - 12%", "3% - 6%", "6% - 9%"))
+# contract_convert(c("219-", "220 to 229", "240+",  "230 to 239"))
+# contract_convert(c("Sanders", "Biden", "Warren", "Buttigieg"))
+# contract_convert(c("Brokered convention?", "Brokered convention?"))
 contract_convert <- function(x, decimal = FALSE) {
   rx <- "(\\d{1,3}(?:,\\d{3})*(?:\\.\\d+)?)"
   p <- all(stringr::str_detect(x, "%"))

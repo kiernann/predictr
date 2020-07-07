@@ -6,7 +6,6 @@
 #'
 #' @param mid The integer market ID.
 #' @param hourly 24 hourly rows per contract be returned? If not, 90 daily rows.
-#' @param convert Should [contract_convert()] be called on `shortName`?
 #' @return A data frame of market contract prices over time.
 #' @examples
 #' market_history(mid = 3633)
@@ -30,7 +29,7 @@
 #' @importFrom lubridate as_date mdy_hms
 #' @importFrom stringr str_remove
 #' @export
-market_history <- function(mid, hourly = FALSE, convert = TRUE) {
+market_history <- function(mid, hourly = FALSE) {
   span <- c("24h", "90d")[c(hourly, !hourly)]
   hist <- utils::read.csv(
     file = sprintf("https://www.predictit.org/Resource/DownloadMarketChartData?marketid=%s&timespan=%s", mid, span),
@@ -50,9 +49,6 @@ market_history <- function(mid, hourly = FALSE, convert = TRUE) {
     hist$time <- lubridate::mdy_hms(hist$time)
   } else {
     hist$time <- lubridate::as_date(lubridate::mdy_hms(hist$time))
-  }
-  if (convert) {
-    hist$contract <- contract_convert(hist$contract)
   }
   hist[, c(4, 1:2, 10, 3, 5:9)]
 }

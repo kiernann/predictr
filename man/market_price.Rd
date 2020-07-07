@@ -16,12 +16,10 @@ A tibble with 7 variables:
 }
 }
 \usage{
-market_price(mid, convert = TRUE)
+market_price(mid)
 }
 \arguments{
 \item{mid}{The integer market ID.}
-
-\item{convert}{Should \code{\link[=contract_convert]{contract_convert()}} be called on \code{shortName}?}
 }
 \value{
 A data frame of market contracts prices.
