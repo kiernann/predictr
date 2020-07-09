@@ -42,9 +42,18 @@ market_history <- function(mid, hourly = FALSE) {
   con <- raw$contracts[, c(1, 5)]
   names(con) <- c("cid", "contract")
   market <- unique(raw$shortName)
-  hist <- cbind(mid, market, hist, stringsAsFactors = FALSE)
+  if (hourly & nrow(hist) < 24) {
+    hist <- dplyr::mutate(hist, contract = NA_character_)
+    hist <- dplyr::bind_rows(hist, con)
+    hist <- dplyr::mutate(hist, mid, market, .before = 1)
+    now_time <- lubridate::floor_date(Sys.time(), "hour")
+    form_time <- format(now_time, "%m/%d/%Y %H:%M:%S %p")
+    hist <- dplyr::mutate(hist, time = form_time)
+  } else {
+    hist <- cbind(mid, market, hist, stringsAsFactors = FALSE)
+    hist <- dplyr::left_join(hist, con, by = "contract")
+  }
   hist <- tibble::as_tibble(hist)
-  hist <- dplyr::left_join(hist, con, by = "contract")
   if (hourly) {
     hist$time <- lubridate::mdy_hms(hist$time)
   } else {
