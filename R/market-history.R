@@ -26,7 +26,7 @@
 #' @importFrom tibble as_tibble
 #' @importFrom jsonlite fromJSON
 #' @importFrom dplyr left_join mutate_at
-#' @importFrom lubridate as_date mdy_hms
+#' @importFrom lubridate as_date mdy_hms with_tz
 #' @importFrom stringr str_remove
 #' @export
 market_history <- function(mid, hourly = FALSE) {

@@ -17,14 +17,14 @@
 #' @importFrom tibble as_tibble
 #' @importFrom jsonlite fromJSON
 #' @importFrom dplyr select mutate
-#' @importFrom lubridate as_datetime as_date
+#' @importFrom lubridate as_datetime as_date with_tz
 #' @export
 market_price <- function(mid) {
   api <- paste0("https://www.predictit.org/api/marketdata/markets/", mid)
   raw <- tibble::as_tibble(jsonlite::fromJSON(api))
   raw$timeStamp <- lubridate::as_datetime(
     x = raw$timeStamp,
-    tz = Sys.timezone(location = TRUE)
+    tz = "America/New_York"
   )
   con <- raw$contracts
   con <- cbind(
@@ -42,7 +42,7 @@ market_price <- function(mid) {
   } else {
     con$end <- lubridate::as_datetime(
       x = con$end,
-      tz = Sys.timezone(location = TRUE)
+      tz = "America/New_York"
     )
   }
   tibble::as_tibble(con[order(con$contract),] )
