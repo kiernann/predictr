@@ -54,6 +54,7 @@ market_history <- function(mid, hourly = FALSE) {
     hist <- dplyr::left_join(hist, con, by = "contract")
   }
   hist <- tibble::as_tibble(hist)
-  hist$time <- lubridate::mdy_hms(hist$time, tz = Sys.timezone(location = TRUE))
+  hist$time <- lubridate::mdy_hms(hist$time)
+  hist$time <- lubridate::with_tz(hist$time, tz = Sys.timezone(location = TRUE))
   hist[, c(4, 1:2, 10, 3, 5:9)]
 }
