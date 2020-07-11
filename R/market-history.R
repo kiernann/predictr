@@ -8,8 +8,8 @@
 #' @param hourly 24 hourly rows per contract be returned? If not, 90 daily rows.
 #' @return A data frame of market contract prices over time.
 #' @examples
-#' market_history(mid = 3633)
-#' market_history(mid = 6400)
+#' market_history(mid = 3698)
+#' market_history(mid = 6653, hourly = TRUE)
 #' @format A tibble with 10 variables:
 #' \describe{
 #'   \item{time}{The hour or day of price}
@@ -54,10 +54,6 @@ market_history <- function(mid, hourly = FALSE) {
     hist <- dplyr::left_join(hist, con, by = "contract")
   }
   hist <- tibble::as_tibble(hist)
-  if (hourly) {
-    hist$time <- lubridate::mdy_hms(hist$time)
-  } else {
-    hist$time <- lubridate::as_date(lubridate::mdy_hms(hist$time))
-  }
+  hist$time <- lubridate::mdy_hms(hist$time, tz = Sys.timezone(location = TRUE))
   hist[, c(4, 1:2, 10, 3, 5:9)]
 }

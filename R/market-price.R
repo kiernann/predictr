@@ -3,9 +3,7 @@
 #' @param mid The integer market ID.
 #' @return A data frame of market contracts prices.
 #' @examples
-#' market_price(mid = 3633)
-#' market_price(mid = 6400)
-#' market_price(mid = 6360)
+#' market_price(mid = 6653)
 #' @format A tibble with 7 variables:
 #' \describe{
 #'   \item{time}{The hour or day of price}
@@ -24,7 +22,10 @@
 market_price <- function(mid) {
   api <- paste0("https://www.predictit.org/api/marketdata/markets/", mid)
   raw <- tibble::as_tibble(jsonlite::fromJSON(api))
-  raw$timeStamp <- lubridate::as_datetime(raw$timeStamp)
+  raw$timeStamp <- lubridate::as_datetime(
+    x = raw$timeStamp,
+    tz = Sys.timezone(location = TRUE)
+  )
   con <- raw$contracts
   con <- cbind(
     con,
@@ -39,7 +40,10 @@ market_price <- function(mid) {
   if (all(con$end == "N/A") | all(is.na(con$end))) {
     con <- con[, -8]
   } else {
-    con$end <- lubridate::as_date(con$end)
+    con$end <- lubridate::as_datetime(
+      x = con$end,
+      tz = Sys.timezone(location = TRUE)
+    )
   }
   tibble::as_tibble(con[order(con$contract),] )
 }

@@ -28,7 +28,5 @@ A data frame of market contracts prices.
 Current market prices
 }
 \examples{
-market_price(mid = 3633)
-market_price(mid = 6400)
-market_price(mid = 6360)
+market_price(mid = 6653)
 }

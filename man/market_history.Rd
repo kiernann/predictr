@@ -35,6 +35,6 @@ For hourly tables, there is one row per contract per hour for the last 24
 hours. For daily tables, one row per contract per day.
 }
 \examples{
-market_history(mid = 3633)
-market_history(mid = 6400)
+market_history(mid = 3698)
+market_history(mid = 6653, hourly = TRUE)
 }
