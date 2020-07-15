@@ -20,30 +20,33 @@
 #' @importFrom lubridate as_datetime as_date with_tz
 #' @export
 market_price <- function(mid) {
-  api <- paste0("https://www.predictit.org/api/marketdata/markets/", mid)
-  raw <- tibble::as_tibble(jsonlite::fromJSON(api))
-  raw$timeStamp <- lubridate::as_datetime(
-    x = raw$timeStamp,
-    tz = "America/New_York"
+  resp <- GET(paste0("https://www.predictit.org/api/marketdata/markets/", mid))
+  dat <- httr::content(
+    x = resp,
+    as = "parsed",
+    type = "application/json",
+    encoding = "ASCII",
+    flatten = TRUE,
+    simplifyDataFrame = TRUE
   )
-  con <- raw$contracts
-  con <- cbind(
-    con,
-    time = raw$timeStamp,
-    mid = raw$id,
-    market = raw$shortName,
-    end = raw$contracts$dateEnd,
-    stringsAsFactors = FALSE
-  )
-  con <- con[, c(14, 15, 16, 1, 5, 7, 12, 17)]
-  names(con)[4:7] <- c("cid", "contract", "last", "close")
-  if (all(con$end == "N/A") | all(is.na(con$end))) {
-    con <- con[, -8]
+  con <- tibble::as_tibble(dat$contracts)
+  if (is.logical(con$dateEnd)) {
+    con$dateEnd <- readr::parse_datetime(NA_character_)
   } else {
-    con$end <- lubridate::as_datetime(
-      x = con$end,
-      tz = "America/New_York"
-    )
+    con$dateEnd <- readr::parse_datetime(con$dateEnd, na = "N/A")
   }
-  tibble::as_tibble(con[order(con$contract),] )
+  con <- dplyr::select(
+    .data = con,
+    cid = id,
+    contract = shortName,
+    last = lastTradePrice,
+    close = lastClosePrice,
+    end = dateEnd
+  )
+  dplyr::bind_cols(
+    time = readr::parse_datetime(dat$timeStamp, na = "N/A"),
+    mid = dat$id,
+    market = dat$shortName,
+    con
+  )
 }

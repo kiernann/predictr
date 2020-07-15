@@ -1,21 +1,19 @@
 #' Market price history
 #'
-#' Produce a data frame of contract prices over time, either hourly or daily.
-#' For hourly tables, there is one row per contract per hour for the last 24
-#' hours. For daily tables, one row per contract per day.
+#' Download a data frame of contract prices over time, either hourly or daily.
+#' This chart data does not include a market name or numeric contract IDs, which
+#' can be obtained from the list of all [open_markets()].
 #'
-#' @param mid The integer market ID.
-#' @param hourly 24 hourly rows per contract be returned? If not, 90 daily rows.
+#' @param mid Market ID.
+#' @param hourly 24 hourly rows per contract? If not, 90 daily rows.
 #' @return A data frame of market contract prices over time.
 #' @examples
 #' market_history(mid = 3698)
 #' market_history(mid = 6653, hourly = TRUE)
-#' @format A tibble with 10 variables:
+#' @format A tibble with 8 variables:
 #' \describe{
 #'   \item{time}{The hour or day of price}
 #'   \item{mid}{Market ID}
-#'   \item{market}{Market question}
-#'   \item{cid}{Contract ID}
 #'   \item{contract}{Question answers}
 #'   \item{open}{Price at start of hour/day}
 #'   \item{close}{Price at end of hour/day}
@@ -23,38 +21,36 @@
 #'   \item{high}{High price of hour/day}
 #'   \item{volume}{Number of shares traded per hour/day}
 #' }
-#' @importFrom tibble as_tibble
-#' @importFrom jsonlite fromJSON
-#' @importFrom dplyr left_join mutate_at
-#' @importFrom lubridate as_date mdy_hms with_tz
-#' @importFrom stringr str_remove
+#' @importFrom dplyr mutate select
+#' @importFrom httr GET content
+#' @importFrom readr cols col_character col_datetime col_number col_double
 #' @export
 market_history <- function(mid, hourly = FALSE) {
-  span <- c("24h", "90d")[c(hourly, !hourly)]
-  hist <- utils::read.csv(
-    file = sprintf("https://www.predictit.org/Resource/DownloadMarketChartData?marketid=%s&timespan=%s", mid, span),
-    stringsAsFactors = FALSE,
-    col.names = c("contract", "time", "open", "high", "low", "close", "volume")
+  resp <- httr::GET(
+    url = "https://www.predictit.org/Resource/DownloadMarketChartData",
+    query = list(
+      marketid = mid,
+      timespan = c("90d", "24h")[hourly + 1]
+    )
   )
-  hist <- dplyr::mutate_at(hist, 3:6, ~as.numeric(stringr::str_remove(., "\\$")))
-  api <- paste0("https://www.predictit.org/api/marketdata/markets/", mid)
-  raw <- jsonlite::fromJSON(api)
-  con <- raw$contracts[, c(1, 5)]
-  names(con) <- c("cid", "contract")
-  market <- unique(raw$shortName)
-  if (hourly & nrow(hist) < 24) {
-    hist <- dplyr::mutate(hist, contract = NA_character_)
-    hist <- dplyr::bind_rows(hist, con)
-    hist <- dplyr::mutate(hist, mid, market, .before = 1)
-    now_time <- lubridate::floor_date(Sys.time(), "hour")
-    form_time <- format(now_time, "%m/%d/%Y %H:%M:%S %p")
-    hist <- dplyr::mutate(hist, time = form_time)
-  } else {
-    hist <- cbind(mid, market, hist, stringsAsFactors = FALSE)
-    hist <- dplyr::left_join(hist, con, by = "contract")
-  }
-  hist <- tibble::as_tibble(hist)
-  hist$time <- lubridate::mdy_hms(hist$time)
-  hist$time <- lubridate::with_tz(hist$time, tz = Sys.timezone(location = TRUE))
-  hist[, c(4, 1:2, 10, 3, 5:9)]
+  dat <- httr::content(
+    x = resp,
+    as = "parsed",
+    type = "text/csv",
+    encoding = "ASCII",
+    skip = 1,
+    col_names = c("contract", "time", "open", "high", "low", "close", "volume"),
+    col_types = readr::cols(
+      contract = readr::col_character(),
+      time = readr::col_datetime("%m/%d/%Y %H:%M:%S %p"),
+      open = readr::col_number(),
+      high = readr::col_number(),
+      low = readr::col_number(),
+      close = readr::col_number(),
+      volume = readr::col_double()
+    )
+  )
+  dat <- dplyr::mutate(dat, mid = as.integer(mid), .before = 1)
+  dat <- dplyr::relocate(dat, time, .before = 1)
+  return(dat)
 }

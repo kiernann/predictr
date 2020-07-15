@@ -1,10 +1,10 @@
 #' List all open markets
 #'
-#' @param split Should the data frame be split into a list of markets?
-#' @return A data frame of market contracts prices.
+#' @param split Split into a list of market data frames?
+#' @return A data frame or list of market contracts prices.
 #' @examples
 #' open_markets(split = FALSE)
-#' @format A tibble with 7 variables:
+#' @format A tibble with 8 variables:
 #' \describe{
 #'   \item{time}{The hour or day of price}
 #'   \item{mid}{Market ID}
@@ -13,28 +13,35 @@
 #'   \item{contract}{Question answers}
 #'   \item{last}{Most recent trading price of the contract}
 #'   \item{close}{Price at the end of the previous midnight EST}
+#'   \item{end}{The date and time which the market closes}
 #' }
+#' @importFrom httr GET content
+#' @importFrom readr parse_datetime
 #' @importFrom tibble as_tibble
-#' @importFrom jsonlite fromJSON
-#' @importFrom dplyr select
 #' @importFrom tidyr unnest
-#' @importFrom lubridate as_datetime
 #' @export
 open_markets <- function(split = FALSE) {
-  api <- "https://www.predictit.org/api/marketdata/all/"
-  raw <- tibble::as_tibble(jsonlite::fromJSON(api)$markets)
-  raw$timeStamp <- lubridate::as_datetime(raw$timeStamp)
-  raw <- raw[, c(7, 1, 3, 6)]
-  names(raw)[1:3] <- c("time", "mid", "market")
-  all <- tidyr::unnest(data = raw, col = "contracts")
-  all <- all[, c(1:4, 8, 10, 15, 5)]
-  names(all)[4:8] <- c("cid", "contract", "last", "close", "end")
-  all$contract[which(all$contract == all$market)] <- NA_character_
-  all$end[which(all$end == "N/A")] <- NA
-  all$end <- as.POSIXct(all$end)
+  resp <- httr::GET("https://www.predictit.org/api/marketdata/all/")
+  dat <- httr::content(
+    x = resp,
+    as = "parsed",
+    type = "application/json",
+    encoding = "ASCII",
+    flatten = TRUE,
+    simplifyDataFrame = TRUE
+  )
+  dat <- tibble::as_tibble(dat$markets)
+  dat <- dat[, c(7, 1, 3, 6)]
+  names(dat)[1:3] <- c("time", "mid", "market")
+  dat <- tidyr::unnest(data = dat, col = "contracts")
+  dat <- dat[, c(1:4, 8, 10, 15, 5)]
+  names(dat)[4:8] <- c("cid", "contract", "last", "close", "end")
+  dat$contract[which(dat$contract == dat$market)] <- NA_character_
+  dat$time <- readr::parse_datetime(dat$time)
+  dat$end <- readr::parse_datetime(dat$end, na = "N/A")
   if (split) {
-    split(all, all$mid)
+    split(dat, dat$mid)
   } else {
-    return(all)
+    return(dat)
   }
 }
