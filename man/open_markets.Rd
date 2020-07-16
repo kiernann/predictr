@@ -4,7 +4,7 @@
 \alias{open_markets}
 \title{List all open markets}
 \format{
-A tibble with 7 variables:
+A tibble with 8 variables:
 \describe{
 \item{time}{The hour or day of price}
 \item{mid}{Market ID}
@@ -13,16 +13,17 @@ A tibble with 7 variables:
 \item{contract}{Question answers}
 \item{last}{Most recent trading price of the contract}
 \item{close}{Price at the end of the previous midnight EST}
+\item{end}{The date and time which the market closes}
 }
 }
 \usage{
 open_markets(split = FALSE)
 }
 \arguments{
-\item{split}{Should the data frame be split into a list of markets?}
+\item{split}{Split into a list of market data frames?}
 }
 \value{
-A data frame of market contracts prices.
+A data frame or list of market contracts prices.
 }
 \description{
 List all open markets

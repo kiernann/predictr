@@ -4,12 +4,10 @@
 \alias{market_history}
 \title{Market price history}
 \format{
-A tibble with 10 variables:
+A tibble with 8 variables:
 \describe{
 \item{time}{The hour or day of price}
 \item{mid}{Market ID}
-\item{market}{Market question}
-\item{cid}{Contract ID}
 \item{contract}{Question answers}
 \item{open}{Price at start of hour/day}
 \item{close}{Price at end of hour/day}
@@ -22,17 +20,17 @@ A tibble with 10 variables:
 market_history(mid, hourly = FALSE)
 }
 \arguments{
-\item{mid}{The integer market ID.}
+\item{mid}{Market ID.}
 
-\item{hourly}{24 hourly rows per contract be returned? If not, 90 daily rows.}
+\item{hourly}{24 hourly rows per contract? If not, 90 daily rows.}
 }
 \value{
 A data frame of market contract prices over time.
 }
 \description{
-Produce a data frame of contract prices over time, either hourly or daily.
-For hourly tables, there is one row per contract per hour for the last 24
-hours. For daily tables, one row per contract per day.
+Download a data frame of contract prices over time, either hourly or daily.
+This chart data does not include a market name or numeric contract IDs, which
+can be obtained from the list of all \code{\link[=open_markets]{open_markets()}}.
 }
 \examples{
 market_history(mid = 3698)

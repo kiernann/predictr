@@ -15,12 +15,13 @@
 #'   \item{close}{Price at the end of the previous midnight EST}
 #' }
 #' @importFrom tibble as_tibble
-#' @importFrom jsonlite fromJSON
-#' @importFrom dplyr select mutate
-#' @importFrom lubridate as_datetime as_date with_tz
+#' @importFrom httr GET content
+#' @importFrom dplyr select mutate bind_cols
+#' @importFrom readr parse_datetime
 #' @export
 market_price <- function(mid) {
-  resp <- GET(paste0("https://www.predictit.org/api/marketdata/markets/", mid))
+  api <- paste0("https://www.predictit.org/api/marketdata/markets/", mid)
+  resp <- httr::GET(api)
   dat <- httr::content(
     x = resp,
     as = "parsed",
