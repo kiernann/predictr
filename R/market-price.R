@@ -36,14 +36,13 @@ market_price <- function(mid) {
   } else {
     con$dateEnd <- readr::parse_datetime(con$dateEnd, na = "N/A")
   }
-  con <- dplyr::select(
-    .data = con,
-    cid = id,
-    contract = shortName,
-    last = lastTradePrice,
-    close = lastClosePrice,
-    end = dateEnd
+  con <- con[, c(1, 5, 7, 12, 2, 13)]
+  names(con) <- c("cid", "contract", "last", "close", "end", "order")
+  con$contract <- factor(
+    x = con$contract,
+    levels = con$contract[order(con$order, con$contract)]
   )
+  con <- con[order(con$order), -length(con)]
   dplyr::bind_cols(
     time = readr::parse_datetime(dat$timeStamp, na = "N/A"),
     mid = dat$id,
