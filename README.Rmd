@@ -1,5 +1,7 @@
 ---
 output: github_document
+editor_options: 
+  chunk_output_type: console
 ---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
@@ -17,7 +19,9 @@ knitr::opts_chunk$set(
   fig.height = 5,
   dpi = 300
 )
-options(width = 90)
+if (!interactive()) {
+  options(width = 90)
+}
 ```
 
 # predictr <a href='https://kiernann.com/predictr'><img src='man/figures/logo.png' align="right" height="139" /></a>
@@ -49,23 +53,61 @@ equilibrium price updates to reflect the new probability.
 
 You can install the development version from [GitHub][gh] with:
 
-``` r
+```{r install-package, eval=FALSE}
 # install.packages("devtools")
 devtools::install_github("kiernann/predictr")
 ```
 
 ## Usage
 
-```{r print-markets}
+The `open_markets()` function lists all active markets.
+
+```{r open-markets}
 library(predictr)
-market_price(6403)
+library(tidyverse)
+all_markets <- open_markets(split = FALSE)
 ```
 
-Current and historical prices can be automatically plotted with [ggplot2][gg].
+Use `market_price()` to get the _current_ price of a market's contracts.
 
-```{r plot-market}
-market_plot(market_price(6403))
-market_plot(market_history(3633), color = 4)
+```{r print-markets}
+# Electoral College margin of victory?
+market_price(6653)[-3]
+```
+
+```{r plot-price, echo=FALSE}
+dat <- market_price(6663)
+dat %>%
+  ggplot(aes(contract, last)) +
+  geom_col(aes(fill = last)) +
+  scale_fill_viridis_c(guide = FALSE, end = 0.75) +
+  scale_x_discrete(breaks = dat$contract[seq(1, 16, by = 3)]) +
+  scale_y_continuous(labels = scales::dollar) +
+  labs(
+    title = "Popular Vote margin of victory in the Presidential election?",
+    x = "Contract",
+    y = "Last Trading Price",
+    caption = "Source: PredictIt.org (6663)"
+  )
+```
+
+Using `market_history()` can return 24 hours or 90 days of price history.
+
+```{r plot-history, echo=FALSE}
+dat <- market_history(2721)
+dat %>%
+  filter(contract %in% c("Democratic", "Republican")) %>% 
+  ggplot(aes(time, close)) +
+  geom_line(aes(color = contract), size = 2) +
+  scale_color_manual(values = c("#3333FF", "#E81B23")) +
+  scale_y_continuous(labels = scales::dollar) +
+  theme(legend.position = "bottom") +
+  labs(
+    title = "Which party will win the 2020 U.S. presidential election?",
+    x = "Contract",
+    y = "Last Trading Price",
+    caption = "Source: PredictIt.org (2903)"
+  )
 ```
 
 <!-- refs: start -->

@@ -47,37 +47,46 @@ devtools::install_github("kiernann/predictr")
 
 ## Usage
 
+The `open_markets()` function lists all active markets.
+
 ``` r
 library(predictr)
-market_price(6403)
-#> # A tibble: 9 x 7
-#>   time                  mid market                          cid contract  last close
-#>   <dttm>              <int> <chr>                         <int> <ord>    <dbl> <dbl>
-#> 1 2020-02-10 22:08:34  6403 NH primary margin of victory? 20984 [0,4)     0.3   0.33
-#> 2 2020-02-10 22:08:34  6403 NH primary margin of victory? 20988 [4,5)     0.13  0.17
-#> 3 2020-02-10 22:08:34  6403 NH primary margin of victory? 20990 [5,6)     0.12  0.17
-#> 4 2020-02-10 22:08:34  6403 NH primary margin of victory? 20991 [6,7)     0.11  0.14
-#> 5 2020-02-10 22:08:34  6403 NH primary margin of victory? 20985 [7,8)     0.11  0.1 
-#> 6 2020-02-10 22:08:34  6403 NH primary margin of victory? 20986 [8,9)     0.09  0.08
-#> 7 2020-02-10 22:08:34  6403 NH primary margin of victory? 20987 [9,10)    0.08  0.06
-#> 8 2020-02-10 22:08:34  6403 NH primary margin of victory? 20992 [10,11)   0.07  0.06
-#> 9 2020-02-10 22:08:34  6403 NH primary margin of victory? 20989 [11,100]  0.18  0.08
+library(tidyverse)
+all_markets <- open_markets(split = FALSE)
 ```
 
-Current and historical prices can be automatically plotted with
-[ggplot2](https://github.com/tidyverse/ggplot2).
+Use `market_price()` to get the *current* price of a market’s contracts.
 
 ``` r
-market_plot(market_price(6403))
+# Electoral College margin of victory?
+market_price(6653)[-3]
+#> # A tibble: 16 x 7
+#>    time                  mid   cid contract           last close end                
+#>    <dttm>              <int> <int> <fct>             <dbl> <dbl> <dttm>             
+#>  1 2020-07-16 13:10:47  6653 22320 GOP by 280+        0.02  0.03 NA                 
+#>  2 2020-07-16 13:10:47  6653 22347 GOP by 210 - 279   0.02  0.02 NA                 
+#>  3 2020-07-16 13:10:47  6653 22345 GOP by 150 - 209   0.04  0.04 NA                 
+#>  4 2020-07-16 13:10:47  6653 22325 GOP by 100 - 149   0.05  0.05 NA                 
+#>  5 2020-07-16 13:10:47  6653 22319 GOP by 60 - 99     0.06  0.07 NA                 
+#>  6 2020-07-16 13:10:47  6653 22317 GOP by 30 -59      0.06  0.06 NA                 
+#>  7 2020-07-16 13:10:47  6653 22316 GOP by 10 - 29     0.06  0.06 NA                 
+#>  8 2020-07-16 13:10:47  6653 22315 GOP by 0 - 9       0.06  0.06 NA                 
+#>  9 2020-07-16 13:10:47  6653 22321 Dems by 1 - 9      0.03  0.03 NA                 
+#> 10 2020-07-16 13:10:47  6653 22322 Dems by 10 - 29    0.04  0.04 NA                 
+#> 11 2020-07-16 13:10:47  6653 22323 Dems by 30 -59     0.07  0.06 NA                 
+#> 12 2020-07-16 13:10:47  6653 22318 Dems by 60 - 99    0.09  0.09 NA                 
+#> 13 2020-07-16 13:10:47  6653 22326 Dems by 100 - 149  0.12  0.12 NA                 
+#> 14 2020-07-16 13:10:47  6653 22346 Dems by 150 - 209  0.15  0.14 NA                 
+#> 15 2020-07-16 13:10:47  6653 22348 Dems by 210 - 279  0.14  0.13 NA                 
+#> 16 2020-07-16 13:10:47  6653 22324 Dems by 280+       0.17  0.16 NA
 ```
 
-<img src="man/figures/README-plot-market-1.png" width="100%" />
+<img src="man/figures/README-plot-price-1.png" width="100%" />
 
-``` r
-market_plot(market_history(3633), color = 4)
-```
+Using `market_history()` can return 24 hours or 90 days of price
+history.
 
-<img src="man/figures/README-plot-market-2.png" width="100%" />
+<img src="man/figures/README-plot-history-1.png" width="100%" />
 
 <!-- refs: start -->
 
