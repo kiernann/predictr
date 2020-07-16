@@ -79,7 +79,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">predictr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
       </span>
     </div>
 
@@ -134,11 +134,23 @@
       <small>Source: <a href='https://github.com/kiernann/predictr/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
+    <div id="predictr-0-1-0" class="section level1">
+<h1 class="page-header" data-toc-text="0.1.0">
+<a href="#predictr-0-1-0" class="anchor"></a>predictr 0.1.0</h1>
+<ul>
+<li>All functions have been rewritten to use <code><a href="https://httr.r-lib.org/reference/GET.html">httr::GET()</a></code> instead of attempting to read the JSON or CSV files directly.</li>
+<li>The <code><a href="../reference/market_history.html">market_history()</a></code> function now only makes a single request for the CSV data, forgoing off the call to the API for the contract IDs and market question.</li>
+<li>
+<code>market_plot()</code> has been removed to reduce dependencies.</li>
+<li>Contract values are sorted by the <code>displayOrder</code> API value.</li>
+<li>All <code><a href="../reference/contract_convert.html">contract_convert()</a></code> has been removed.</li>
+</ul>
+</div>
     <div id="predictr-0-0-2" class="section level1">
 <h1 class="page-header" data-toc-text="0.0.2">
 <a href="#predictr-0-0-2" class="anchor"></a>predictr 0.0.2</h1>
 <ul>
-<li>Create <code><a href="../reference/market_plot.html">market_plot()</a></code> using ggplot2.</li>
+<li>Create <code>market_plot()</code> using ggplot2.</li>
 <li>Order <code><a href="../reference/market_price.html">market_price()</a></code> by contract factor.</li>
 <li>Set market names as character strings.</li>
 <li>Convert binary contracts to logical.</li>

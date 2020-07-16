@@ -80,7 +80,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">predictr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
       </span>
     </div>
 
@@ -140,20 +140,20 @@
     <p>List all open markets</p>
     </div>
 
-    <pre class="usage"><span class='fu'>open_markets</span>(<span class='kw'>split</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+    <pre class="usage"><span class='fu'>open_markets</span>(<span class='kw'>nest</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>split</th>
-      <td><p>Should the data frame be split into a list of markets?</p></td>
+      <th>nest</th>
+      <td><p>Should the <code>contracts</code> column be nested per market?</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
 
-    <p>A tibble with 7 variables:</p><dl'>
+    <p>A tibble with 8 variables:</p><dl'>
 <dt>time</dt><dd><p>The hour or day of price</p></dd>
 <dt>mid</dt><dd><p>Market ID</p></dd>
 <dt>market</dt><dd><p>Market question</p></dd>
@@ -161,6 +161,7 @@
 <dt>contract</dt><dd><p>Question answers</p></dd>
 <dt>last</dt><dd><p>Most recent trading price of the contract</p></dd>
 <dt>close</dt><dd><p>Price at the end of the previous midnight EST</p></dd>
+<dt>end</dt><dd><p>The date and time which the market closes</p></dd>
 
 </dl>
 
@@ -169,20 +170,20 @@
     <p>A data frame of market contracts prices.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>open_markets</span>(<span class='kw'>split</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; # A tibble: 933 x 8
-#&gt;    time                  mid market   cid contract  last close
-#&gt;    &lt;dttm&gt;              &lt;int&gt; &lt;chr&gt;  &lt;int&gt; &lt;chr&gt;    &lt;dbl&gt; &lt;dbl&gt;
-#&gt;  1 2020-07-09 15:05:40  2721 Which…  4390 Democra…  0.63  0.62
-#&gt;  2 2020-07-09 15:05:40  2721 Which…  4389 Republi…  0.41  0.41
-#&gt;  3 2020-07-09 15:05:40  2721 Which…  4388 Liberta…  0.02  0.01
-#&gt;  4 2020-07-09 15:05:40  2721 Which…  4391 Green     0.02  0.01
-#&gt;  5 2020-07-09 15:05:40  2747 Will …  4495 &lt;NA&gt;      0.05  0.05
-#&gt;  6 2020-07-09 15:05:40  2875 Will …  5121 &lt;NA&gt;      0.03  0.03
-#&gt;  7 2020-07-09 15:05:40  2901 Woman…  5215 &lt;NA&gt;      0.07  0.07
-#&gt;  8 2020-07-09 15:05:40  2902 Will …  5216 &lt;NA&gt;      0.06  0.06
-#&gt;  9 2020-07-09 15:05:40  2903 Will …  5217 &lt;NA&gt;      0.06  0.06
-#&gt; 10 2020-07-09 15:05:40  2992 Will …  5534 &lt;NA&gt;      0.02  0.02
-#&gt; # … with 923 more rows, and 1 more variable: end &lt;dttm&gt;</div></pre>
+    <pre class="examples"><div class='input'><span class='fu'>open_markets</span>(<span class='kw'>nest</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; # A tibble: 244 x 4
+#&gt;    time                  mid market                               contracts     
+#&gt;    &lt;dttm&gt;              &lt;int&gt; &lt;chr&gt;                                &lt;list&gt;        
+#&gt;  1 2020-07-16 13:41:54  2721 Which party wins the Presidency in … &lt;tibble [4 × …
+#&gt;  2 2020-07-16 13:41:54  2747 Will Cuban run in 2020?              &lt;tibble [1 × …
+#&gt;  3 2020-07-16 13:41:54  2875 Will Cuomo run in 2020?              &lt;tibble [1 × …
+#&gt;  4 2020-07-16 13:41:54  2901 Woman president in 2020?             &lt;tibble [1 × …
+#&gt;  5 2020-07-16 13:41:54  2902 Will the 2020 Dem nominee be a woma… &lt;tibble [1 × …
+#&gt;  6 2020-07-16 13:41:54  2903 Will the 2020 GOP nominee be a woma… &lt;tibble [1 × …
+#&gt;  7 2020-07-16 13:41:54  2992 Will Zuckerberg run in 2020?         &lt;tibble [1 × …
+#&gt;  8 2020-07-16 13:41:54  3041 Will Kasich run in 2020?             &lt;tibble [1 × …
+#&gt;  9 2020-07-16 13:41:54  3042 Will Cruz run in 2020?               &lt;tibble [1 × …
+#&gt; 10 2020-07-16 13:41:54  3269 Will the Rock run in 2020?           &lt;tibble [1 × …
+#&gt; # … with 234 more rows</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

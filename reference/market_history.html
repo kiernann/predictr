@@ -47,9 +47,9 @@
 
 
 <meta property="og:title" content="Market price history — market_history" />
-<meta property="og:description" content="Produce a data frame of contract prices over time, either hourly or daily.
-For hourly tables, there is one row per contract per hour for the last 24
-hours. For daily tables, one row per contract per day." />
+<meta property="og:description" content="Download a data frame of contract prices over time, either hourly or daily.
+This chart data does not include a market name or numeric contract IDs, which
+can be obtained from the list of all open_markets()." />
 <meta property="og:image" content="https://kiernann.com/predictr/logo.png" />
 
 
@@ -82,7 +82,7 @@ hours. For daily tables, one row per contract per day." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">predictr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
       </span>
     </div>
 
@@ -139,9 +139,9 @@ hours. For daily tables, one row per contract per day." />
     </div>
 
     <div class="ref-description">
-    <p>Produce a data frame of contract prices over time, either hourly or daily.
-For hourly tables, there is one row per contract per hour for the last 24
-hours. For daily tables, one row per contract per day.</p>
+    <p>Download a data frame of contract prices over time, either hourly or daily.
+This chart data does not include a market name or numeric contract IDs, which
+can be obtained from the list of all <code><a href='open_markets.html'>open_markets()</a></code>.</p>
     </div>
 
     <pre class="usage"><span class='fu'>market_history</span>(<span class='no'>mid</span>, <span class='kw'>hourly</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
@@ -151,21 +151,19 @@ hours. For daily tables, one row per contract per day.</p>
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>mid</th>
-      <td><p>The integer market ID.</p></td>
+      <td><p>Market ID.</p></td>
     </tr>
     <tr>
       <th>hourly</th>
-      <td><p>24 hourly rows per contract be returned? If not, 90 daily rows.</p></td>
+      <td><p>24 hourly rows per contract? If not, 90 daily rows.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
 
-    <p>A tibble with 10 variables:</p><dl'>
+    <p>A tibble with 8 variables:</p><dl'>
 <dt>time</dt><dd><p>The hour or day of price</p></dd>
 <dt>mid</dt><dd><p>Market ID</p></dd>
-<dt>market</dt><dd><p>Market question</p></dd>
-<dt>cid</dt><dd><p>Contract ID</p></dd>
 <dt>contract</dt><dd><p>Question answers</p></dd>
 <dt>open</dt><dd><p>Price at start of hour/day</p></dd>
 <dt>close</dt><dd><p>Price at end of hour/day</p></dd>
@@ -180,33 +178,33 @@ hours. For daily tables, one row per contract per day.</p>
     <p>A data frame of market contract prices over time.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>market_history</span>(<span class='kw'>mid</span> <span class='kw'>=</span> <span class='fl'>3633</span>)</div><div class='output co'>#&gt; # A tibble: 2,970 x 10
-#&gt;    time         mid market           cid contract  open  high   low close volume
-#&gt;    &lt;date&gt;     &lt;dbl&gt; &lt;chr&gt;          &lt;int&gt; &lt;chr&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;int&gt;
-#&gt;  1 2020-04-10  3633 2020 Democrat…  7725 Sanders   0.01  0.02  0.01  0.01  41227
-#&gt;  2 2020-04-10  3633 2020 Democrat…  7726 Booker    0.01  0.01  0.01  0.01      0
-#&gt;  3 2020-04-10  3633 2020 Democrat…  7727 Harris    0.01  0.02  0.01  0.01  30408
-#&gt;  4 2020-04-10  3633 2020 Democrat…  7728 Gillibr…  0.01  0.01  0.01  0.01      0
-#&gt;  5 2020-04-10  3633 2020 Democrat…  7729 Biden     0.86  0.86  0.83  0.84  42241
-#&gt;  6 2020-04-10  3633 2020 Democrat…  7730 Warren    0.01  0.01  0.01  0.01    212
-#&gt;  7 2020-04-10  3633 2020 Democrat…  7731 Cuomo     0.05  0.07  0.05  0.07  48040
-#&gt;  8 2020-04-10  3633 2020 Democrat…  7732 Zuckerb…  0.01  0.01  0.01  0.01      0
-#&gt;  9 2020-04-10  3633 2020 Democrat…  7733 Kaine     0.01  0.01  0.01  0.01      0
-#&gt; 10 2020-04-10  3633 2020 Democrat…  7734 Klobuch…  0.01  0.01  0.01  0.01    322
-#&gt; # … with 2,960 more rows</div><div class='input'><span class='fu'>market_history</span>(<span class='kw'>mid</span> <span class='kw'>=</span> <span class='fl'>6400</span>)</div><div class='output co'>#&gt; # A tibble: 72 x 10
-#&gt;    time         mid market           cid contract  open  high   low close volume
-#&gt;    &lt;date&gt;     &lt;dbl&gt; &lt;chr&gt;          &lt;int&gt; &lt;chr&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;int&gt;
-#&gt;  1 2020-02-05  6400 @realDonaldTr… 20957 290+      0.32  0.37  0.2   0.2   15611
-#&gt;  2 2020-02-05  6400 @realDonaldTr… 20958 250 - 2…  0.11  0.11  0.07  0.07   4969
-#&gt;  3 2020-02-05  6400 @realDonaldTr… 20959 230 - 2…  0.16  0.16  0.04  0.08   6454
-#&gt;  4 2020-02-05  6400 @realDonaldTr… 20960 240 - 2…  0.11  0.12  0.06  0.07   5051
-#&gt;  5 2020-02-05  6400 @realDonaldTr… 20961 220 - 2…  0.15  0.15  0.04  0.07   5506
-#&gt;  6 2020-02-05  6400 @realDonaldTr… 20962 280 - 2…  0.09  0.09  0.04  0.05   5073
-#&gt;  7 2020-02-05  6400 @realDonaldTr… 20963 219-      0.16  0.45  0.16  0.45  15686
-#&gt;  8 2020-02-05  6400 @realDonaldTr… 20964 270 - 2…  0.09  0.1   0.05  0.05   5967
-#&gt;  9 2020-02-05  6400 @realDonaldTr… 20965 260 - 2…  0.1   0.1   0.05  0.06   5718
-#&gt; 10 2020-02-06  6400 @realDonaldTr… 20957 290+      0.2   0.24  0.09  0.09   9393
-#&gt; # … with 62 more rows</div></pre>
+    <pre class="examples"><div class='input'><span class='fu'>market_history</span>(<span class='kw'>mid</span> <span class='kw'>=</span> <span class='fl'>3698</span>)</div><div class='output co'>#&gt; # A tibble: 2,127 x 8
+#&gt;    time                  mid contract    open  high   low close volume
+#&gt;    &lt;dttm&gt;              &lt;int&gt; &lt;chr&gt;      &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;
+#&gt;  1 2020-04-17 00:00:00  3698 Harris      0.02  0.02  0.01  0.02  13783
+#&gt;  2 2020-04-17 00:00:00  3698 Warren      0.01  0.01  0.01  0.01  16188
+#&gt;  3 2020-04-17 00:00:00  3698 Booker      0.01  0.01  0.01  0.01     10
+#&gt;  4 2020-04-17 00:00:00  3698 Kasich      0.01  0.01  0.01  0.01     50
+#&gt;  5 2020-04-17 00:00:00  3698 Biden       0.45  0.45  0.44  0.45  26009
+#&gt;  6 2020-04-17 00:00:00  3698 Sanders     0.01  0.01  0.01  0.01    798
+#&gt;  7 2020-04-17 00:00:00  3698 Pence       0.02  0.02  0.01  0.02   5092
+#&gt;  8 2020-04-17 00:00:00  3698 Trump       0.5   0.52  0.5   0.51  37443
+#&gt;  9 2020-04-17 00:00:00  3698 Gillibrand  0.01  0.01  0.01  0.01      0
+#&gt; 10 2020-04-17 00:00:00  3698 Cuomo       0.03  0.04  0.03  0.03   2069
+#&gt; # … with 2,117 more rows</div><div class='input'><span class='fu'>market_history</span>(<span class='kw'>mid</span> <span class='kw'>=</span> <span class='fl'>6653</span>, <span class='kw'>hourly</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; # A tibble: 384 x 8
+#&gt;    time                  mid contract         open  high   low close volume
+#&gt;    &lt;dttm&gt;              &lt;int&gt; &lt;chr&gt;           &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;
+#&gt;  1 2020-07-15 18:00:00  6653 GOP by 0 - 9     0.05  0.06  0.05  0.05    186
+#&gt;  2 2020-07-15 18:00:00  6653 GOP by 10 - 29   0.05  0.06  0.05  0.06    200
+#&gt;  3 2020-07-15 18:00:00  6653 GOP by 30 -59    0.05  0.05  0.05  0.05    105
+#&gt;  4 2020-07-15 18:00:00  6653 Dems by 60 - 99  0.09  0.1   0.09  0.09    911
+#&gt;  5 2020-07-15 18:00:00  6653 GOP by 60 - 99   0.07  0.07  0.07  0.07    350
+#&gt;  6 2020-07-15 18:00:00  6653 GOP by 280+      0.03  0.03  0.02  0.03   1017
+#&gt;  7 2020-07-15 18:00:00  6653 Dems by 1 - 9    0.03  0.03  0.03  0.03    325
+#&gt;  8 2020-07-15 18:00:00  6653 Dems by 10 - 29  0.05  0.05  0.05  0.05    295
+#&gt;  9 2020-07-15 18:00:00  6653 Dems by 30 -59   0.06  0.07  0.06  0.06   1125
+#&gt; 10 2020-07-15 18:00:00  6653 Dems by 280+     0.17  0.17  0.16  0.16    527
+#&gt; # … with 374 more rows</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

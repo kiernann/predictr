@@ -18,7 +18,14 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
 <script src="pkgdown.js"></script><meta property="og:title" content="Predict Politics with Markets">
-<meta property="og:description" content="Query the PredictIt API for market price history.">
+<meta property="og:description" content="Prediction markets utlizie the efficient market
+    hypothesis to crowdsource the probability of political events and
+    outcomes. Traders buy futures contracts with real money and the moving
+    equilibirum price reflects underlying probability. Query the PredictIt
+    API &lt;https://www.predictit.org/api/marketdata/all/&gt; to obtain a list
+    of all active prediction markets, the current trading price of
+    available contracts, or the price of contracts over a given time
+    period.">
 <meta property="og:image" content="https://kiernann.com/predictr/logo.png">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -38,7 +45,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">predictr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
       </span>
     </div>
 
@@ -111,25 +118,35 @@
 <div id="usage" class="section level2">
 <h2 class="hasAnchor">
 <a href="#usage" class="anchor"></a>Usage</h2>
+<p>The <code><a href="reference/open_markets.html">open_markets()</a></code> function lists all active markets.</p>
 <div class="sourceCode" id="cb2"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">predictr</span>)
-<span class="fu"><a href="reference/market_price.html">market_price</a></span>(<span class="fl">6403</span>)
-<span class="co">#&gt; # A tibble: 9 x 7</span>
-<span class="co">#&gt;   time                  mid market                          cid contract  last close</span>
-<span class="co">#&gt;   &lt;dttm&gt;              &lt;int&gt; &lt;chr&gt;                         &lt;int&gt; &lt;ord&gt;    &lt;dbl&gt; &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 2020-02-10 22:08:34  6403 NH primary margin of victory? 20984 [0,4)     0.3   0.33</span>
-<span class="co">#&gt; 2 2020-02-10 22:08:34  6403 NH primary margin of victory? 20988 [4,5)     0.13  0.17</span>
-<span class="co">#&gt; 3 2020-02-10 22:08:34  6403 NH primary margin of victory? 20990 [5,6)     0.12  0.17</span>
-<span class="co">#&gt; 4 2020-02-10 22:08:34  6403 NH primary margin of victory? 20991 [6,7)     0.11  0.14</span>
-<span class="co">#&gt; 5 2020-02-10 22:08:34  6403 NH primary margin of victory? 20985 [7,8)     0.11  0.1 </span>
-<span class="co">#&gt; 6 2020-02-10 22:08:34  6403 NH primary margin of victory? 20986 [8,9)     0.09  0.08</span>
-<span class="co">#&gt; 7 2020-02-10 22:08:34  6403 NH primary margin of victory? 20987 [9,10)    0.08  0.06</span>
-<span class="co">#&gt; 8 2020-02-10 22:08:34  6403 NH primary margin of victory? 20992 [10,11)   0.07  0.06</span>
-<span class="co">#&gt; 9 2020-02-10 22:08:34  6403 NH primary margin of victory? 20989 [11,100]  0.18  0.08</span></pre></div>
-<p>Current and historical prices can be automatically plotted with <a href="https://github.com/tidyverse/ggplot2">ggplot2</a>.</p>
-<div class="sourceCode" id="cb3"><pre class="r"><span class="fu"><a href="reference/market_plot.html">market_plot</a></span>(<span class="fu"><a href="reference/market_price.html">market_price</a></span>(<span class="fl">6403</span>))</pre></div>
-<p><img src="reference/figures/README-plot-market-1.png" width="100%"></p>
-<div class="sourceCode" id="cb4"><pre class="r"><span class="fu"><a href="reference/market_plot.html">market_plot</a></span>(<span class="fu"><a href="reference/market_history.html">market_history</a></span>(<span class="fl">3633</span>), <span class="kw">color</span> <span class="kw">=</span> <span class="fl">4</span>)</pre></div>
-<p><img src="reference/figures/README-plot-market-2.png" width="100%"></p>
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">tidyverse</span>)
+<span class="no">all_markets</span> <span class="kw">&lt;-</span> <span class="fu"><a href="reference/open_markets.html">open_markets</a></span>(<span class="kw">split</span> <span class="kw">=</span> <span class="fl">FALSE</span>)</pre></div>
+<p>Use <code><a href="reference/market_price.html">market_price()</a></code> to get the <em>current</em> price of a market’s contracts.</p>
+<div class="sourceCode" id="cb3"><pre class="r"><span class="co"># Electoral College margin of victory?</span>
+<span class="fu"><a href="reference/market_price.html">market_price</a></span>(<span class="fl">6653</span>)[-<span class="fl">3</span>]
+<span class="co">#&gt; # A tibble: 16 x 7</span>
+<span class="co">#&gt;    time                  mid   cid contract           last close end                </span>
+<span class="co">#&gt;    &lt;dttm&gt;              &lt;int&gt; &lt;int&gt; &lt;fct&gt;             &lt;dbl&gt; &lt;dbl&gt; &lt;dttm&gt;             </span>
+<span class="co">#&gt;  1 2020-07-16 13:10:47  6653 22320 GOP by 280+        0.02  0.03 NA                 </span>
+<span class="co">#&gt;  2 2020-07-16 13:10:47  6653 22347 GOP by 210 - 279   0.02  0.02 NA                 </span>
+<span class="co">#&gt;  3 2020-07-16 13:10:47  6653 22345 GOP by 150 - 209   0.04  0.04 NA                 </span>
+<span class="co">#&gt;  4 2020-07-16 13:10:47  6653 22325 GOP by 100 - 149   0.05  0.05 NA                 </span>
+<span class="co">#&gt;  5 2020-07-16 13:10:47  6653 22319 GOP by 60 - 99     0.06  0.07 NA                 </span>
+<span class="co">#&gt;  6 2020-07-16 13:10:47  6653 22317 GOP by 30 -59      0.06  0.06 NA                 </span>
+<span class="co">#&gt;  7 2020-07-16 13:10:47  6653 22316 GOP by 10 - 29     0.06  0.06 NA                 </span>
+<span class="co">#&gt;  8 2020-07-16 13:10:47  6653 22315 GOP by 0 - 9       0.06  0.06 NA                 </span>
+<span class="co">#&gt;  9 2020-07-16 13:10:47  6653 22321 Dems by 1 - 9      0.03  0.03 NA                 </span>
+<span class="co">#&gt; 10 2020-07-16 13:10:47  6653 22322 Dems by 10 - 29    0.04  0.04 NA                 </span>
+<span class="co">#&gt; 11 2020-07-16 13:10:47  6653 22323 Dems by 30 -59     0.07  0.06 NA                 </span>
+<span class="co">#&gt; 12 2020-07-16 13:10:47  6653 22318 Dems by 60 - 99    0.09  0.09 NA                 </span>
+<span class="co">#&gt; 13 2020-07-16 13:10:47  6653 22326 Dems by 100 - 149  0.12  0.12 NA                 </span>
+<span class="co">#&gt; 14 2020-07-16 13:10:47  6653 22346 Dems by 150 - 209  0.15  0.14 NA                 </span>
+<span class="co">#&gt; 15 2020-07-16 13:10:47  6653 22348 Dems by 210 - 279  0.14  0.13 NA                 </span>
+<span class="co">#&gt; 16 2020-07-16 13:10:47  6653 22324 Dems by 280+       0.17  0.16 NA</span></pre></div>
+<p><img src="reference/figures/README-plot-price-1.png" width="100%"></p>
+<p>Using <code><a href="reference/market_history.html">market_history()</a></code> can return 24 hours or 90 days of price history.</p>
+<p><img src="reference/figures/README-plot-history-1.png" width="100%"></p>
 <!-- refs: start -->
 <!-- refs: end -->
 </div>

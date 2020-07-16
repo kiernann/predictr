@@ -80,7 +80,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">predictr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
       </span>
     </div>
 
@@ -169,41 +169,26 @@
     <p>A data frame of market contracts prices.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>market_price</span>(<span class='kw'>mid</span> <span class='kw'>=</span> <span class='fl'>3633</span>)</div><div class='output co'>#&gt; # A tibble: 33 x 7
-#&gt;    time                  mid market                     cid contract  last close
-#&gt;    &lt;dttm&gt;              &lt;int&gt; &lt;chr&gt;                    &lt;int&gt; &lt;chr&gt;    &lt;dbl&gt; &lt;dbl&gt;
-#&gt;  1 2020-07-09 15:05:30  3633 2020 Democratic nominee? 16040 Bennet    0.01  0.01
-#&gt;  2 2020-07-09 15:05:30  3633 2020 Democratic nominee?  7729 Biden     0.92  0.92
-#&gt;  3 2020-07-09 15:05:30  3633 2020 Democratic nominee? 13871 Bloombe…  0.01  0.01
-#&gt;  4 2020-07-09 15:05:30  3633 2020 Democratic nominee?  7726 Booker    0.01  0.01
-#&gt;  5 2020-07-09 15:05:30  3633 2020 Democratic nominee?  9089 Brown     0.01  0.01
-#&gt;  6 2020-07-09 15:05:30  3633 2020 Democratic nominee? 15710 Bullock   0.01  0.01
-#&gt;  7 2020-07-09 15:05:30  3633 2020 Democratic nominee? 14769 Buttigi…  0.01  0.01
-#&gt;  8 2020-07-09 15:05:30  3633 2020 Democratic nominee? 14848 Castro    0.01  0.01
-#&gt;  9 2020-07-09 15:05:30  3633 2020 Democratic nominee? 13491 Clinton   0.04  0.04
-#&gt; 10 2020-07-09 15:05:30  3633 2020 Democratic nominee?  7731 Cuomo     0.01  0.01
-#&gt; # … with 23 more rows</div><div class='input'><span class='fu'>market_price</span>(<span class='kw'>mid</span> <span class='kw'>=</span> <span class='fl'>6400</span>)</div><div class='output co'>#&gt; # A tibble: 9 x 8
-#&gt;   time                  mid market           cid contract  last close end       
-#&gt;   &lt;dttm&gt;              &lt;int&gt; &lt;chr&gt;          &lt;int&gt; &lt;chr&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;date&gt;    
-#&gt; 1 2020-07-09 15:05:52  6400 @realDonaldTr… 20963 219-      0.01  0.01 2020-02-12
-#&gt; 2 2020-07-09 15:05:52  6400 @realDonaldTr… 20961 220 - 2…  0.01  0.01 2020-02-12
-#&gt; 3 2020-07-09 15:05:52  6400 @realDonaldTr… 20959 230 - 2…  0.01  0.01 2020-02-12
-#&gt; 4 2020-07-09 15:05:52  6400 @realDonaldTr… 20960 240 - 2…  0.01  0.01 2020-02-12
-#&gt; 5 2020-07-09 15:05:52  6400 @realDonaldTr… 20958 250 - 2…  0.01  0.01 2020-02-12
-#&gt; 6 2020-07-09 15:05:52  6400 @realDonaldTr… 20965 260 - 2…  0.01  0.01 2020-02-12
-#&gt; 7 2020-07-09 15:05:52  6400 @realDonaldTr… 20964 270 - 2…  0.99  0.99 2020-02-12
-#&gt; 8 2020-07-09 15:05:52  6400 @realDonaldTr… 20962 280 - 2…  0.01  0.01 2020-02-12
-#&gt; 9 2020-07-09 15:05:52  6400 @realDonaldTr… 20957 290+      0.01  0.01 2020-02-12</div><div class='input'><span class='fu'>market_price</span>(<span class='kw'>mid</span> <span class='kw'>=</span> <span class='fl'>6360</span>)</div><div class='output co'>#&gt; # A tibble: 8 x 7
-#&gt;   time                  mid market                      cid contract  last close
-#&gt;   &lt;dttm&gt;              &lt;int&gt; &lt;chr&gt;                     &lt;int&gt; &lt;chr&gt;    &lt;dbl&gt; &lt;dbl&gt;
-#&gt; 1 2020-07-09 15:05:57  6360 Iowa caucuses margin of … 20656 1% - 2%   0.01  0.01
-#&gt; 2 2020-07-09 15:05:57  6360 Iowa caucuses margin of … 20655 1%-       0.99  0.99
-#&gt; 3 2020-07-09 15:05:57  6360 Iowa caucuses margin of … 20657 2% - 3%   0.01  0.01
-#&gt; 4 2020-07-09 15:05:57  6360 Iowa caucuses margin of … 20658 3% - 4%   0.01  0.01
-#&gt; 5 2020-07-09 15:05:57  6360 Iowa caucuses margin of … 20659 4% - 5%   0.01  0.01
-#&gt; 6 2020-07-09 15:05:57  6360 Iowa caucuses margin of … 20661 5% - 6%   0.01  0.01
-#&gt; 7 2020-07-09 15:05:57  6360 Iowa caucuses margin of … 20662 6% - 7%   0.01  0.01
-#&gt; 8 2020-07-09 15:05:57  6360 Iowa caucuses margin of … 20660 7%+       0.01  0.01</div></pre>
+    <pre class="examples"><div class='input'><span class='fu'>market_price</span>(<span class='kw'>mid</span> <span class='kw'>=</span> <span class='fl'>6653</span>)</div><div class='output co'>#&gt; # A tibble: 16 x 8
+#&gt;    time                  mid market   cid contract  last close
+#&gt;    &lt;dttm&gt;              &lt;int&gt; &lt;chr&gt;  &lt;int&gt; &lt;fct&gt;    &lt;dbl&gt; &lt;dbl&gt;
+#&gt;  1 2020-07-16 13:42:15  6653 Elect… 22320 GOP by …  0.02  0.03
+#&gt;  2 2020-07-16 13:42:15  6653 Elect… 22347 GOP by …  0.02  0.02
+#&gt;  3 2020-07-16 13:42:15  6653 Elect… 22345 GOP by …  0.04  0.04
+#&gt;  4 2020-07-16 13:42:15  6653 Elect… 22325 GOP by …  0.06  0.05
+#&gt;  5 2020-07-16 13:42:15  6653 Elect… 22319 GOP by …  0.06  0.07
+#&gt;  6 2020-07-16 13:42:15  6653 Elect… 22317 GOP by …  0.06  0.06
+#&gt;  7 2020-07-16 13:42:15  6653 Elect… 22316 GOP by …  0.06  0.06
+#&gt;  8 2020-07-16 13:42:15  6653 Elect… 22315 GOP by …  0.06  0.06
+#&gt;  9 2020-07-16 13:42:15  6653 Elect… 22321 Dems by…  0.03  0.03
+#&gt; 10 2020-07-16 13:42:15  6653 Elect… 22322 Dems by…  0.04  0.04
+#&gt; 11 2020-07-16 13:42:15  6653 Elect… 22323 Dems by…  0.07  0.06
+#&gt; 12 2020-07-16 13:42:15  6653 Elect… 22318 Dems by…  0.09  0.09
+#&gt; 13 2020-07-16 13:42:15  6653 Elect… 22326 Dems by…  0.12  0.12
+#&gt; 14 2020-07-16 13:42:15  6653 Elect… 22346 Dems by…  0.15  0.14
+#&gt; 15 2020-07-16 13:42:15  6653 Elect… 22348 Dems by…  0.13  0.13
+#&gt; 16 2020-07-16 13:42:15  6653 Elect… 22324 Dems by…  0.16  0.16
+#&gt; # … with 1 more variable: end &lt;dttm&gt;</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
