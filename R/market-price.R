@@ -30,23 +30,12 @@ market_price <- function(mid) {
     flatten = TRUE,
     simplifyDataFrame = TRUE
   )
-  con <- tibble::as_tibble(dat$contracts)
-  if (is.logical(con$dateEnd)) {
-    con$dateEnd <- readr::parse_datetime(NA_character_)
-  } else {
-    con$dateEnd <- readr::parse_datetime(con$dateEnd, na = "N/A")
-  }
-  con <- con[, c(1, 5, 7, 12, 2, 13)]
-  names(con) <- c("cid", "contract", "last", "close", "end", "order")
-  con$contract <- factor(
-    x = con$contract,
-    levels = con$contract[order(con$order, con$contract)]
-  )
-  con <- con[order(con$order), -length(con)]
-  dplyr::bind_cols(
+  dat <- dplyr::bind_cols(
     time = readr::parse_datetime(dat$timeStamp, na = "N/A"),
     mid = dat$id,
     market = dat$shortName,
-    con
+    fix_con(dat$contracts)
   )
+  dat$contract[which(dat$contract == dat$market)] <- NA_character_
+  return(dat)
 }
