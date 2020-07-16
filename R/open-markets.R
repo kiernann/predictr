@@ -18,7 +18,6 @@
 #' @importFrom httr GET content
 #' @importFrom readr parse_datetime
 #' @importFrom tibble as_tibble
-#' @importFrom tidyr unnest
 #' @export
 open_markets <- function(nest = TRUE) {
   resp <- httr::GET("https://www.predictit.org/api/marketdata/all/")

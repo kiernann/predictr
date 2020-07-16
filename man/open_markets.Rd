@@ -17,17 +17,17 @@ A tibble with 8 variables:
 }
 }
 \usage{
-open_markets(split = FALSE)
+open_markets(nest = TRUE)
 }
 \arguments{
-\item{split}{Split into a list of market data frames?}
+\item{nest}{Should the \code{contracts} column be nested per market?}
 }
 \value{
-A data frame or list of market contracts prices.
+A data frame of market contracts prices.
 }
 \description{
 List all open markets
 }
 \examples{
-open_markets(split = FALSE)
+open_markets(nest = TRUE)
 }
