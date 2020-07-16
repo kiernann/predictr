@@ -1,3 +1,13 @@
+# predictr 0.1.0
+
+* All functions have been rewritten to use `httr::GET()` instead of attempting
+to read the JSON or CSV files directly.
+* The `market_history()` function now only makes a single request for the CSV
+data, forgoing off the call to the API for the contract IDs and market question.
+* `market_plot()` has been removed to reduce dependencies.
+* Contract values are sorted by the `displayOrder` API value.
+* All `contract_convert()` has been removed.
+
 # predictr 0.0.2
 
 * Create `market_plot()` using ggplot2.
