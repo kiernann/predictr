@@ -51,6 +51,5 @@ market_history <- function(mid, hourly = FALSE) {
     )
   )
   dat <- dplyr::mutate(dat, mid = as.integer(mid), .before = 1)
-  dat <- dplyr::relocate(dat, time, .before = 1)
-  return(dat)
+  dat[, c(3, 1:2, 4:8)]
 }
