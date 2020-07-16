@@ -7,4 +7,5 @@ test_that("discrete market price returns", {
   expect_s3_class(dat, "tbl")
   expect_s3_class(dat$time, "POSIXct")
   expect_s3_class(dat$end, "POSIXct")
+  Sys.sleep(30)
 })

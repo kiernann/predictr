@@ -7,9 +7,11 @@ test_that("open markets are returned as tidy tibble", {
   expect_s3_class(x, "data.frame")
   expect_s3_class(x$time, "POSIXct")
   expect_gt(length(unique(x$cid)), length(unique(x$mid)))
+  Sys.sleep(30)
 })
 
 test_that("open markets can be returned as list", {
   x <- open_markets(split = TRUE)
   expect_type(x, "list")
+  Sys.sleep(30)
 })
