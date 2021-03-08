@@ -3,31 +3,15 @@
 \name{open_markets}
 \alias{open_markets}
 \title{List all open markets}
-\format{
-A tibble with 8 variables:
-\describe{
-\item{time}{The hour or day of price}
-\item{mid}{Market ID}
-\item{market}{Market question}
-\item{cid}{Contract ID}
-\item{contract}{Question answers}
-\item{last}{Most recent trading price of the contract}
-\item{close}{Price at the end of the previous midnight EST}
-\item{end}{The date and time which the market closes}
-}
-}
 \usage{
-open_markets(nest = TRUE)
-}
-\arguments{
-\item{nest}{Should the \code{contracts} column be nested per market?}
+open_markets()
 }
 \value{
-A data frame of market contracts prices.
+A data frame of markets with nested contract prices.
 }
 \description{
 List all open markets
 }
 \examples{
-open_markets(nest = TRUE)
+open_markets()
 }

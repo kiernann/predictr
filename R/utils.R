@@ -13,3 +13,9 @@ as_tibble <- function(x) {
 is_installed <- function(pkg) {
   isTRUE(requireNamespace(pkg, quietly = TRUE))
 }
+
+api_time <- function(x) {
+  out <- as.POSIXct(x, format = "%Y-%m-%dT%H:%M:%S", tz = "EST")
+  attr(out, "tzone") <- "UTC"
+  out
+}
