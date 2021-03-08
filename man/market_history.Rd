@@ -3,26 +3,13 @@
 \name{market_history}
 \alias{market_history}
 \title{Market price history}
-\format{
-A tibble with 8 variables:
-\describe{
-\item{time}{The hour or day of price}
-\item{mid}{Market ID}
-\item{contract}{Question answers}
-\item{open}{Price at start of hour/day}
-\item{close}{Price at end of hour/day}
-\item{low}{Low price of hour/day}
-\item{high}{High price of hour/day}
-\item{volume}{Number of shares traded per hour/day}
-}
-}
 \usage{
-market_history(mid, hourly = FALSE)
+market_history(id, timespan = c("24h", "7d", "90d"))
 }
 \arguments{
-\item{mid}{Market ID.}
+\item{id}{Market ID number.}
 
-\item{hourly}{24 hourly rows per contract? If not, 90 daily rows.}
+\item{timespan}{One of "24h", "7d" or "90d". Either hourly or daily.}
 }
 \value{
 A data frame of market contract prices over time.
@@ -33,6 +20,6 @@ This chart data does not include a market name or numeric contract IDs, which
 can be obtained from the list of all \code{\link[=open_markets]{open_markets()}}.
 }
 \examples{
-market_history(mid = 3698)
-market_history(mid = 6653, hourly = TRUE)
+market_history(id = 3698)
+market_history(id = 6653, timespan = "7d")
 }
