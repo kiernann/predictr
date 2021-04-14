@@ -8,7 +8,6 @@
 #' @param timespan One of "24h", "7d" or "90d". Either hourly or daily.
 #' @return A data frame of market contract prices over time.
 #' @examples
-#' market_history(id = 3698)
 #' market_history(id = 6653, timespan = "7d")
 #' @importFrom httr RETRY content
 #' @importFrom utils read.csv

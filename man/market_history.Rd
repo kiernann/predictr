@@ -20,6 +20,5 @@ This chart data does not include a market name or numeric contract IDs, which
 can be obtained from the list of all \code{\link[=open_markets]{open_markets()}}.
 }
 \examples{
-market_history(id = 3698)
 market_history(id = 6653, timespan = "7d")
 }
