@@ -11,6 +11,7 @@
 #' market_history(id = 3698)
 #' market_history(id = 6653, timespan = "7d")
 #' @importFrom httr RETRY content
+#' @importFrom utils read.csv
 #' @export
 market_history <- function(id, timespan = c("24h", "7d", "90d")) {
   resp <- httr::RETRY(
@@ -26,7 +27,7 @@ market_history <- function(id, timespan = c("24h", "7d", "90d")) {
   )
   con <- textConnection(dat)
   on.exit(con)
-  dat <- read.csv(con)
+  dat <- utils::read.csv(con)
   dat$Date <- as.POSIXct(dat$Date, tz = "EDT", format = "%m/%d/%Y %H:%M:%S")
   dat[, c(3:6)] <- lapply(dat[, c(3:6)], undollar)
   as_tibble(dat)
