@@ -3,23 +3,11 @@
 \name{market_price}
 \alias{market_price}
 \title{Current market prices}
-\format{
-A tibble with 7 variables:
-\describe{
-\item{time}{The hour or day of price}
-\item{mid}{Market ID}
-\item{market}{Market question}
-\item{cid}{Contract ID}
-\item{contract}{Question answers}
-\item{last}{Most recent trading price of the contract}
-\item{close}{Price at the end of the previous midnight EST}
-}
-}
 \usage{
-market_price(mid)
+market_price(id)
 }
 \arguments{
-\item{mid}{The integer market ID.}
+\item{id}{The integer market ID.}
 }
 \value{
 A data frame of market contracts prices.
@@ -28,5 +16,5 @@ A data frame of market contracts prices.
 Current market prices
 }
 \examples{
-market_price(mid = 6653)
+market_price(id = 6653)
 }

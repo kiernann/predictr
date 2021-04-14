@@ -1,27 +1,17 @@
 #' Current market prices
 #'
-#' @param mid The integer market ID.
+#' @param id The integer market ID.
 #' @return A data frame of market contracts prices.
 #' @examples
-#' market_price(mid = 6653)
-#' @format A tibble with 7 variables:
-#' \describe{
-#'   \item{time}{The hour or day of price}
-#'   \item{mid}{Market ID}
-#'   \item{market}{Market question}
-#'   \item{cid}{Contract ID}
-#'   \item{contract}{Question answers}
-#'   \item{last}{Most recent trading price of the contract}
-#'   \item{close}{Price at the end of the previous midnight EST}
-#' }
-#' @importFrom tibble as_tibble
-#' @importFrom httr GET content
-#' @importFrom dplyr select mutate bind_cols
-#' @importFrom readr parse_datetime
+#' market_price(id = 6653)
+#' @importFrom httr GET content accept_json
 #' @export
-market_price <- function(mid) {
-  api <- paste0("https://www.predictit.org/api/marketdata/markets/", mid)
-  resp <- httr::GET(api)
+market_price <- function(id) {
+  resp <- httr::RETRY(
+    verb = "GET",
+    url = paste0("https://www.predictit.org/api/marketdata/markets/", id),
+    httr::accept_json()
+  )
   dat <- httr::content(
     x = resp,
     as = "parsed",
@@ -30,12 +20,15 @@ market_price <- function(mid) {
     flatten = TRUE,
     simplifyDataFrame = TRUE
   )
-  dat <- dplyr::bind_cols(
-    time = readr::parse_datetime(dat$timeStamp, na = "N/A"),
-    mid = dat$id,
-    market = dat$shortName,
-    fix_con(dat$contracts)
+
+  names(dat$contracts)[1] <- "contract"
+  dat$contracts$dateEnd <- api_time(dat$contracts$dateEnd)
+  cont <- cbind(
+    id = id,
+    market = dat$name,
+    shortMarket = dat$shortName,
+    timeStamp = api_time(dat$timeStamp),
+    dat$contracts
   )
-  dat$contract[which(dat$contract == dat$market)] <- NA_character_
-  return(dat)
+  as_tibble(cont[, -c(7)])
 }
