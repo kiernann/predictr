@@ -1,3 +1,11 @@
+# oredictr 0.2.0
+
+* All functions now use `httr::RETRY()` instead of `GET()` on its own.
+* Removed `contract_convert()` (and moved to [k5] package).
+* All returned data now uses the default column names and structure.
+
+[k5]: https://github.com/kiernann/k5/
+
 # predictr 0.1.0
 
 * All functions have been rewritten to use `httr::GET()` instead of attempting
