@@ -6,17 +6,15 @@ Authors@R:
            family = "Nicholls",
            role = c("aut", "cre"),
            email = "kiernann@protonmail.com")
-Description: Prediction markets utlizie the efficient market
-    hypothesis to crowdsource the probability of political events and
-    outcomes. Traders buy futures contracts with real money and the moving
-    equilibirum price reflects underlying probability. Query the PredictIt
-    API <https://www.predictit.org/api/marketdata/all/> to obtain a list
-    of all active prediction markets, the current trading price of
-    available contracts, or the price of contracts over a given time
-    period.
+Description: Prediction markets utlizie the efficient market hypothesis to
+    crowdsource the probability of political events and outcomes. Traders
+    buy futures contracts with real money and the moving equilibirum price
+    reflects underlying probability. Query the PredictIt API
+    <https://www.predictit.org/api/marketdata/all/> to obtain a list of
+    all active prediction markets, the current trading price of available
+    contracts, or the price of contracts over a given time period.
 License: GPL-3
-URL: https://kiernann.com/predictr
-    https://github.com/kiernann/predictr
+URL: https://kiernann.com/predictr https://github.com/kiernann/predictr
 BugReports: https://github.com/kiernann/predictr/issues
 Depends: 
     R (>= 3.2)
@@ -27,6 +25,7 @@ Suggests:
     knitr (>= 1.28),
     rmarkdown (>= 2.1),
     testthat (>= 2.1.0),
+    tibble (>= 3.1.2),
     tidyr (>= 1.0.0)
 VignetteBuilder: 
     knitr
