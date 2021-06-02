@@ -15,7 +15,7 @@ is_installed <- function(pkg) {
 }
 
 api_time <- function(x) {
-  out <- as.POSIXct(x, format = "%Y-%m-%dT%H:%M:%S", tz = "EST")
+  out <- as.POSIXct(x, format = "%Y-%m-%dT%H:%M:%S", tz = "America/New_York")
   attr(out, "tzone") <- "UTC"
   out
 }
