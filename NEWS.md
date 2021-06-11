@@ -1,4 +1,8 @@
-# oredictr 0.2.0
+# predictr 0.2.1
+
+* Add back `contract_convert()` using only base R functions.
+
+# predictr 0.2.0
 
 * All functions now use `httr::RETRY()` instead of `GET()` on its own.
 * Removed `contract_convert()` (and moved to [k5] package).
